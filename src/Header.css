@@ -1,0 +1,59 @@
+.Header{
+   height: 10vh;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+.Header-links{
+   display: flex;
+   align-items: center;
+}
+.Header-title{
+   background-color: rgba(194, 194, 194, 0.74);
+   height: 100%;
+   padding: 15px;
+   width: fit-content;
+   display:  flex;
+   align-items: center;
+}
+.Header-back{
+   margin-left: 10px;
+}
+.Header h3{
+   color: black;
+   display: inline-block;
+   margin: 0;
+}
+.Header-level{
+   width:120px;
+   margin: 0 15px;
+}
+.Header-slider{
+   width:30%;
+   display: inline-block;
+}
+.rc-slider-handle,
+.rc-slider-handle:hover,
+.rc-slider-handle:active,
+.rc-slider-handle:focus {
+   background-color: lime;
+   border:none;
+   outline: none;
+   width:20px;
+   height:20px;
+}
+.rc-slider-track{
+   background-color: transparent;
+}
+.rc-slider-rail{
+   height: 10px;
+}
+.Header-select{
+   display: flex;
+   justify-content: flex-end;
+   width: 30%;
+   height: 100%;
+}
+.MuiInputBase-root.MuiInput-root.MuiInput-underline{
+   margin-right: 10px;;
+}

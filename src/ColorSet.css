@@ -1,0 +1,17 @@
+.ColorSet{
+   width:100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+.ColorSet-colors{
+   width: 100%;
+   height: 95vh;
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+}
+.ColorSet .ColorBox{
+   width: 33.3%;
+   height: 33.3%;
+}
