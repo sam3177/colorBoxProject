@@ -3,6 +3,9 @@
 	height: 25%;
 	position: relative;
 }
+.light-text{
+   color: white;
+}
 .ColorBox-overlay {
 	position: absolute;
 	top: 0;

@@ -30,7 +30,7 @@ class App extends Component {
 			}
       console.log(selColor);
       selColor.shift()
-			return <ColorSet {...props} palette={selColor} />;
+			return <ColorSet {...props} palInfo={palette} palette={selColor} />;
 		};
 		return (
 			<Switch>

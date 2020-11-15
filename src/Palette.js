@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ColorBox from './ColorBox';
 import './Palette.css';
 import Header from './Header';
+import Footer from './Footer';
 
 class Palette extends Component {
 	state = { level: 500, colorType: 'hex' };
@@ -17,9 +18,9 @@ class Palette extends Component {
 			<ColorBox
 				key={color.id}
 				toCopy={color[this.state.colorType]}
-            background={color}
-            palName={palette.id}
-            link={true}
+				background={color}
+				palName={palette.id}
+				link={true}
 			/>
 		));
 		return (
@@ -31,10 +32,7 @@ class Palette extends Component {
 					changeType={this.changeType}
 				/>
 				<div className="Palette-colors">{colors}</div>
-				<div className="Palette-footer">
-					<p>{palette.paletteName}</p>
-					<span>{palette.emoji}</span>
-				</div>
+				<Footer palette={palette} />
 			</div>
 		);
 	}

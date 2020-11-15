@@ -18,18 +18,21 @@ const styles = {
 		fontWeight      : '600',
 		display         : 'flex',
 		flexDirection   : 'column',
-		justifyContent  : 'flex-end'
+      justifyContent  : 'flex-end',
+      cursor: 'pointer'
+      
 	},
 	colors : {
-		// display    : 'flex',
-		// flexWrap   : 'wrap',
+		display    : 'flex',
+		flexWrap   : 'wrap',
 		backgroundColor : 'grey',
 		width           : '95%',
-		height          : '100px',
+		height          : '9vh',
 		borderRadius    : '5px',
 		overFlow        : 'hidden',
 		// border       : '1px solid black',
-		margin          : '0 auto'
+      margin          : '0 auto'
+      
 		// '& .color' : {
 		// 	width  : '20%',
 		// 	height : '20px'
@@ -46,14 +49,15 @@ const styles = {
 		// '& .color:nth-of-type(20)':{
 		//    borderRadius : '0 0 5px 0'
 		// }
-	},
+   },
+   
 	color  : {
 		width        : '20%',
 		height       : '25%',
 		display      : 'inline-block',
-		margin       : '0 auto',
+		// margin       : '0 auto',
 		position     : 'relative',
-		marginBottom : '-3px'
+		// marginBottom : '-3px'
 	},
 
 	title  : {

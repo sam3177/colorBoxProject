@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import ColorBox from './ColorBox';
-import './ColorSet.css';
 import Header from './Header';
+import Footer from './Footer';
+import './ColorSet.css';
 
 class ColorSet extends Component {
 	state = { colorType: 'hex' };
@@ -10,7 +11,7 @@ class ColorSet extends Component {
 		this.setState({ colorType: type });
 	};
 	render () {
-      let { palette } = this.props;
+      let { palette, palInfo} = this.props;
       console.log(this.props)
 		let colors = palette.map((color) => (
 			<ColorBox
@@ -19,7 +20,7 @@ class ColorSet extends Component {
 				background={color}
 			/>
 		));
-		return (
+		return ( 
 			<div className="ColorSet">
 				<Header
                palName={this.props.match.params.paletteName}
@@ -27,10 +28,8 @@ class ColorSet extends Component {
 					changeType={this.changeType}
 				/>
 				<div className="ColorSet-colors">{colors}</div>
-				<div className="ColorSet-footer">
-					<p>{palette.paletteName}</p>
-					<span>{palette.emoji}</span>
-				</div>
+				<Footer palette={palInfo}/>
+            
 			</div>
 		);
 	}
