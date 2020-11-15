@@ -1,4 +1,4 @@
-.Header{
+/* .Header{
    height: 10vh;
    max-height: 50px;
    display: flex;
@@ -32,7 +32,7 @@
 .Header-slider{
    width:30%;
    display: inline-block;
-}
+} */
 .rc-slider-handle,
 .rc-slider-handle:hover,
 .rc-slider-handle:active,
@@ -50,12 +50,14 @@
 .rc-slider-rail{
    height: 5px;
 }
-.Header-select{
+/* .Header-select{
    display: flex;
    justify-content: flex-end;
    width: 30%;
    height: 100%;
-}
+} */
 .MuiInputBase-root.MuiInput-root.MuiInput-underline{
-   margin-right: 10px;;
+   margin-right: 10px;
+   margin-top: 5px;
+   height: 70%;
 }

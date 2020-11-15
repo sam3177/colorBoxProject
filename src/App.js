@@ -46,13 +46,10 @@ class App extends Component {
 					exact
 					path="/palette/:paletteName/color/:colorName"
 					render={getColorSet}
-					// render={() => <h1>colorssssssssss</h1>}
 				/>
 				<Route render={() => <h1>404, madafaca!!!</h1>} />
 			</Switch>
-			// <div className="App">
-			// 	<Palette {...SeedColors[2]} />
-			// </div>
+			
 		);
 	}
 }

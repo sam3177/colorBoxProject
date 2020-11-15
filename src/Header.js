@@ -6,8 +6,73 @@ import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import { Link } from 'react-router-dom';
+import { withStyles } from '@material-ui/styles';
 import 'rc-slider/assets/index.css';
 import './Header.css';
+
+const styles = {
+	header : {
+		height         : '10vh',
+		maxHeight      : '50px',
+		display        : 'flex',
+		justifyContent : 'space-between',
+		alignItems     : 'center',
+		'& h3'         : {
+			color   : 'black',
+			display : 'inline-block',
+			margin  : '0'
+		}
+	},
+	links  : {
+		display    : 'flex',
+		alignItems : 'center'
+	},
+	title  : {
+		backgroundColor : 'rgba(194, 194, 194, 0.74)',
+		height          : '100%',
+		padding         : '15px',
+		width           : 'fit-content',
+		display         : 'flex',
+		alignItems      : 'center'
+	},
+	back   : {
+		marginLeft : '10px'
+	},
+	level  : {
+		width  : '120px',
+		margin : '0 15px'
+	},
+	slider : {
+		width   : '30%',
+		display : 'inline-block'
+	},
+	select : {
+		display        : 'flex',
+		justifyContent : 'flex-end',
+		width          : '30%',
+		height         : '100%'
+	}
+	// .rc-slider-handle,
+	// .rc-slider-handle:hover,
+	// .rc-slider-handle:active,
+	// .rc-slider-handle:focus {
+	// 	background-color: 'lime',
+	// 	border:'none',
+	// 	outline: 'none',
+	// 	width:'15px',
+	// 	height:'15px',
+	// 	/* margin-top: 2px; */
+	// }
+	// .rc-slider-track{
+	// 	background-color: 'transparent',
+	// }
+	// .rc-slider-rail{
+	// 	height: '5px',
+	// }
+	// .MuiInputBase-root.MuiInput-root.MuiInput-underline{
+	// 	margin-right: '10px',;
+	// }
+};
 
 class Header extends Component {
 	state = { type: 'hex', open: false };
@@ -28,16 +93,17 @@ class Header extends Component {
 		this.setState({ open: false });
 	};
 	render () {
+		let { classes } = this.props;
 		return (
-			<nav className="Header">
-				<div className="Header-links">
-					<div className="Header-title">
+			<nav className={classes.header}>
+				<div className={classes.links}>
+					<div className={classes.title}>
 						<Link to="/">
 							<h3>react color picker</h3>
 						</Link>
 					</div>
 					{!this.props.level && (
-						<div className="Header-back">
+						<div className={classes.back}>
 							<Link to={`/palette/${this.props.palName}`}>
 								<h3>BACK</h3>
 							</Link>
@@ -45,11 +111,11 @@ class Header extends Component {
 					)}
 				</div>
 				{this.props.level && (
-					<div className="Header-level">{`LEVEL: ${this.props.level}`}</div>
+					<div className={classes.level}>{`LEVEL: ${this.props.level}`}</div>
 				)}
 				{this.props.level && (
 					<Slider
-						className="Header-slider"
+						className={classes.slider}
 						defaultValue={this.props.level}
 						min={100}
 						max={900}
@@ -57,7 +123,7 @@ class Header extends Component {
 						onAfterChange={this.handleLevelChange}
 					/>
 				)}
-				<div className="Header-select">
+				<div className={classes.select}>
 					<Select value={this.state.type} onChange={this.handleTypeChange}>
 						<MenuItem value="hex">HEX - #ffffff</MenuItem>
 						<MenuItem value="rgb">RGB - rgb(200,200,200)</MenuItem>
@@ -91,4 +157,4 @@ class Header extends Component {
 	}
 }
 
-export default Header;
+export default withStyles(styles)(Header);

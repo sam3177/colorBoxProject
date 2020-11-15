@@ -1,8 +1,25 @@
 import React, { Component } from 'react';
 import ColorBox from './ColorBox';
-import './Palette.css';
 import Header from './Header';
 import Footer from './Footer';
+import { withStyles } from '@material-ui/styles';
+
+// import './Palette.css';
+
+const styles = {
+   palette: {
+      width:'100%',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+   },
+   colors:{
+      width: '100%',
+      height: '85vh',
+      display: 'flex',
+      flexWrap: 'wrap',
+   }
+}
 
 class Palette extends Component {
 	state = { level: 500, colorType: 'hex' };
@@ -13,7 +30,7 @@ class Palette extends Component {
 		this.setState({ colorType: type, snack: true });
 	};
 	render () {
-		let { palette } = this.props;
+		let { palette, classes } = this.props;
 		let colors = palette.colors[this.state.level].map((color) => (
 			<ColorBox
 				key={color.id}
@@ -24,18 +41,18 @@ class Palette extends Component {
 			/>
 		));
 		return (
-			<div className="Palette">
+			<div className={classes.palette}>
 				<Header
 					level={this.state.level}
 					changeLevel={this.changeLevel}
 					type={this.state.colorType}
 					changeType={this.changeType}
 				/>
-				<div className="Palette-colors">{colors}</div>
+				<div className={classes.colors}>{colors}</div>
 				<Footer palette={palette} />
 			</div>
 		);
 	}
 }
 
-export default Palette;
+export default withStyles(styles)(Palette);

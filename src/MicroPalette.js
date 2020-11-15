@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/styles';
 // import './MicroPalette.css';
 
@@ -28,7 +27,7 @@ const styles = {
 		backgroundColor : 'grey',
 		width           : '95%',
 		height          : '9vh',
-		borderRadius    : '5px',
+		// borderRadius    : '5px',
 		overFlow        : 'hidden',
 		// border       : '1px solid black',
       margin          : '0 auto'
