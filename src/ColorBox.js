@@ -18,17 +18,27 @@ let styles = {
 		position   : 'absolute',
 		top        : '0',
 		left       : '0',
-		zIndex     : '0',
-		opacity    : '0',
+		zIndex     : (state) =>
+
+				state.copied ? '9' :
+				'0',
+		opacity    : (state) =>
+
+				state.copied ? '1' :
+				'0',
+		transform  : (state) =>
+
+				state.copied ? 'scale(10)' :
+				'none',
 		width      : '100%',
 		height     : '100%',
-		transition : 'transform 0.5s ease-in-out',
-		'&$active' : {
-			opacity   : '1',
-			zIndex    : '9',
-			transform : 'scale(10)',
-			position  : 'absolute'
-		}
+		transition : 'transform 0.5s ease-in-out'
+		// '&$active' : {
+		// 	opacity   : '1',
+		// 	zIndex    : '9',
+		// 	transform : 'scale(10)',
+		// 	position  : 'absolute'
+		// }
 	},
 
 	content    : {
@@ -74,7 +84,7 @@ let styles = {
 		position  : 'relative',
 		cursor    : 'pointer',
 		'&:hover' : {
-			'&$copyButton' : {
+			'& button' : {
 				opacity : '1'
 			}
 		}
@@ -122,8 +132,7 @@ class ColorBox extends Component {
 			<CopyToClipboard text={this.props.toCopy} onCopy={this.handleCopy}>
 				<div className={classes.root} style={{ backgroundColor: hex }}>
 					<div
-						className={`${classes.overlay} ${this.state.copied &&
-							classes.active}`}
+						className={classes.overlay}
 						style={{ backgroundColor: hex }}
 					/>
 					<div
