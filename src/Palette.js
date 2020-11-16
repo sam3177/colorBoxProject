@@ -3,23 +3,7 @@ import ColorBox from './ColorBox';
 import Header from './Header';
 import Footer from './Footer';
 import { withStyles } from '@material-ui/styles';
-
-// import './Palette.css';
-
-const styles = {
-   palette: {
-      width:'100%',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-   },
-   colors:{
-      width: '100%',
-      height: '85vh',
-      display: 'flex',
-      flexWrap: 'wrap',
-   }
-}
+import styles from './styles/PaletteStyles';
 
 class Palette extends Component {
 	state = { level: 500, colorType: 'hex' };

@@ -1,18 +1,7 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/styles';
+import styles from './styles/FooterStyles'
 
-let styles = {
-	root : {
-		width          : '100%',
-		height         : '5vh',
-		display        : 'flex',
-		justifyContent : 'flex-end',
-		alignItems     : 'center',
-		'& span'       : {
-			margin : '0 20px'
-		}
-	}
-};
 class Footer extends Component {
 	render () {
 		let { palette, classes } = this.props;
