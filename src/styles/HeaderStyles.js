@@ -30,35 +30,34 @@ const styles = {
 		width  : '120px',
 		margin : '0 15px'
 	},
-	slider : {
-		width   : '30%',
-		display : 'inline-block'
-	},
 	select : {
-		display        : 'flex',
-		justifyContent : 'flex-end',
-		width          : '30%',
-		height         : '100%'
+		display                                                 : 'flex',
+		justifyContent                                          : 'flex-end',
+		width                                                   : '30%',
+		height                                                  : '100%',
+		'& .MuiInputBase-root.MuiInput-root.MuiInput-underline' : {
+			marginRight : '10px'
+		}
+	},
+	slider : {
+		width                                                                                             :
+			'30%',
+		display                                                                                           :
+			'inline-block',
+		'& .rc-slider-handle, .rc-slider-handle:hover, .rc-slider-handle:active, .rc-slider-handle:focus' : {
+			backgroundColor : 'lime',
+			border          : 'none',
+			outline         : 'none',
+			width           : '15px',
+			height          : '15px'
+			/* margin-top: 2px; */
+		},
+		'& .rc-slider-track'                                                                              : {
+			backgroundColor : 'transparent'
+		},
+		'& .rc-slider-rail'                                                                               : {
+			height : '5px'
+		}
 	}
-	// .rc-slider-handle,
-	// .rc-slider-handle:hover,
-	// .rc-slider-handle:active,
-	// .rc-slider-handle:focus {
-	// 	background-color: 'lime',
-	// 	border:'none',
-	// 	outline: 'none',
-	// 	width:'15px',
-	// 	height:'15px',
-	// 	/* margin-top: 2px; */
-	// }
-	// .rc-slider-track{
-	// 	background-color: 'transparent',
-	// }
-	// .rc-slider-rail{
-	// 	height: '5px',
-	// }
-	// .MuiInputBase-root.MuiInput-root.MuiInput-underline{
-	// 	margin-right: '10px',;
-	// }
 };
 export default styles;
