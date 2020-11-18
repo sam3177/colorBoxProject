@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MicroPalette from './MicroPalette';
+import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/styles';
 import styles from './styles/PalettesStyles';
 
@@ -14,6 +15,7 @@ class Palettes extends Component {
 				<div className={classes.container}>
 					<nav className={classes.nav}>
 						<h2 className={classes.title}>React Colors</h2>
+						<Link to="/palette/new">New Palette</Link>
 					</nav>
 					<div className={classes.palettes}>
 						{SeedColors.map((palette) => (

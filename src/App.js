@@ -4,6 +4,7 @@ import SeedColors from './SeedColors';
 import Palette from './Palette';
 import Palettes from './Palettes';
 import ColorSet from './ColorSet';
+import NewPaletteForm from './NewPaletteForm';
 import './App.css';
 import { generatePalette } from './ColorHelper';
 
@@ -28,8 +29,8 @@ class App extends Component {
 					if (number.id === colorN) selColor.push(number);
 				}
 			}
-      console.log(selColor);
-      selColor.shift()
+			console.log(selColor);
+			selColor.shift();
 			return <ColorSet {...props} palInfo={palette} palette={selColor} />;
 		};
 		return (
@@ -41,6 +42,11 @@ class App extends Component {
 						<Palettes {...routeProps} SeedColors={SeedColors} />
 					)}
 				/>
+				<Route
+					exact
+					path="/palette/new"
+					render={(routeProps) => <NewPaletteForm {...routeProps} />}
+				/>
 				<Route exact path="/palette/:paletteName" render={getPalettes} />
 				<Route
 					exact
@@ -49,7 +55,6 @@ class App extends Component {
 				/>
 				<Route render={() => <h1>404, madafaca!!!</h1>} />
 			</Switch>
-			
 		);
 	}
 }
