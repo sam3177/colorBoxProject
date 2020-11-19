@@ -4,17 +4,21 @@ import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
+import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import styles from './styles/NewPaletteFormStyles';
+import { ChromePicker } from 'react-color';
 
 class NewPaletteForm extends Component {
 	state = {
-		open : false
+		open  : true,
+		color : 'green'
 	};
 
 	handleDrawerOpen = () => {
@@ -24,10 +28,12 @@ class NewPaletteForm extends Component {
 	handleDrawerClose = () => {
 		this.setState({ open: false });
 	};
-
+	colorChange = (color) => {
+		this.setState({ color: color.hex });
+	};
 	render () {
 		const { classes } = this.props;
-		const { open } = this.state;
+		const { open, color } = this.state;
 
 		return (
 			<div className={classes.root}>
@@ -67,6 +73,20 @@ class NewPaletteForm extends Component {
 						</IconButton>
 					</div>
 					<Divider />
+               <div className={classes.drawerContent}>
+
+               
+					<Typography variant="h5">Design Your Palette</Typography>
+					<div className={classes.btnContainer}>
+						<Button variant="contained">CLEAR PALETTE</Button>
+						<Button variant="contained">RANDOM COLOR</Button>
+					</div>
+					<ChromePicker className={classes.ChromePicker} color={color} onChangeComplete={this.colorChange} />
+               <TextField className={classes.textInput} id="filled-basic" label="Color Name" variant="filled" />
+					<Button className={classes.submit} variant="contained" >
+						ADD COLOR
+					</Button>
+               </div>
 				</Drawer>
 				<main
 					className={classNames(classes.content, {
