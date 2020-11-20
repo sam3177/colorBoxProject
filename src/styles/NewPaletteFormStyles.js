@@ -85,8 +85,14 @@ const styles = (theme) => ({
 		justifyContent : 'flex-end'
 	},
 	content       : {
-		flexGrow   : 1,
-		padding    : theme.spacing(3),
+		marginTop: '69px',
+		width:'100%',
+		height:'calc(100vh - 69px)',
+		// display: 'flex',
+		// flexWrap:'wrap',
+		// alignItems: 'flex-start',
+		// flexGrow   : 1,
+		// padding    : theme.spacing(3),
 		transition : theme.transitions.create('margin', {
 			easing   : theme.transitions.easing.sharp,
 			duration : theme.transitions.duration.leavingScreen

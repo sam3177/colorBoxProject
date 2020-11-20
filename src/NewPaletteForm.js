@@ -13,13 +13,15 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import styles from './styles/NewPaletteFormStyles';
+import DraggableColorBox from './DraggableColorBox';
 import { ChromePicker } from 'react-color';
+import seed from './SeedColors';
 
 class NewPaletteForm extends Component {
 	state = {
-		open  : true,
-      color : 'green',
-      colors:['#1b89ce']
+		open   : true,
+		color  : 'green',
+		colors : seed[0].colors
 	};
 
 	handleDrawerOpen = () => {
@@ -30,16 +32,39 @@ class NewPaletteForm extends Component {
 		this.setState({ open: false });
 	};
 	colorChange = (color) => {
-      this.setState({ color: color.hex });
-      console.log(color)
-   };
-   addColor= ()=>{
-      this.setState(st=>({colors: [...st.colors, this.state.color]}))
+		this.setState({ color: color.hex });
+		console.log(color);
+	};
+	addColor = () => {
+		if (this.state.colors.length < 20) {
+			this.setState((st) => ({
+				colors: [
+					...st.colors,
+					{ name: this.state.color, color: this.state.color }
+				]
+			}));
+		}
+	};
+	clearPalette = () => {
+		this.setState({ colors: [] });
+	};
+	getRandomColor = () => {
+      let idx = Math.floor(Math.random() * seed[0].colors.length);
+      if (this.state.colors.length < 20) {
+		this.setState((st) => ({
+			colors: [
+				...st.colors,
+				{ name: seed[0].colors[idx].name, color: seed[0].colors[idx].color }
+			]
+      }));
    }
+	};
 	render () {
 		const { classes } = this.props;
 		const { open, color, colors } = this.state;
-let newColors= colors.map(color=> (<div style={{backgroundColor:color}}><p>{color}</p></div>))
+		let newColors = colors.map((color) => (
+			<DraggableColorBox key={color.name} color={color} />
+		));
 		return (
 			<div className={classes.root}>
 				<CssBaseline />
@@ -78,29 +103,41 @@ let newColors= colors.map(color=> (<div style={{backgroundColor:color}}><p>{colo
 						</IconButton>
 					</div>
 					<Divider />
-               <div className={classes.drawerContent}>
-
-               
-					<Typography variant="h5">Design Your Palette</Typography>
-					<div className={classes.btnContainer}>
-						<Button variant="contained">CLEAR PALETTE</Button>
-						<Button variant="contained">RANDOM COLOR</Button>
+					<div className={classes.drawerContent}>
+						<Typography variant="h5">Design Your Palette</Typography>
+						<div className={classes.btnContainer}>
+							<Button onClick={this.clearPalette} variant="contained">
+								CLEAR PALETTE
+							</Button>
+							<Button onClick={this.getRandomColor} variant="contained">RANDOM COLOR</Button>
+						</div>
+						<ChromePicker
+							className={classes.ChromePicker}
+							color={color}
+							onChange={this.colorChange}
+						/>
+						<TextField
+							className={classes.textInput}
+							id="filled-basic"
+							label="Color Name"
+							variant="filled"
+						/>
+						<Button
+							style={{ backgroundColor: color }}
+							onClick={this.addColor}
+							className={classes.submit}
+							variant="contained"
+						>
+							ADD COLOR
+						</Button>
 					</div>
-					<ChromePicker className={classes.ChromePicker} color={color} onChange={this.colorChange} />
-               <TextField className={classes.textInput} id="filled-basic" label="Color Name" variant="filled" />
-					<Button style={{backgroundColor: color}} onClick={this.addColor} className={classes.submit} variant="contained" >
-						ADD COLOR
-					</Button>
-               </div>
 				</Drawer>
 				<main
 					className={classNames(classes.content, {
 						[classes.contentShift]: open
 					})}
 				>
-					<div className={classes.drawerHeader} />
-               <p>hello world!</p>
-               {newColors}
+					{newColors}
 				</main>
 			</div>
 		);
