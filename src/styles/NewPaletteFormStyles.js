@@ -72,7 +72,7 @@ const styles = (theme) => ({
 	submit:{
 		width: '100%',
 		height:'50px',
-		backgroundColor:'#31E2ED'
+		// backgroundColor:'#31E2ED'
 	},
 	drawerPaper   : {
 		width : drawerWidth

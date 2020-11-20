@@ -18,7 +18,8 @@ import { ChromePicker } from 'react-color';
 class NewPaletteForm extends Component {
 	state = {
 		open  : true,
-		color : 'green'
+      color : 'green',
+      colors:['#1b89ce']
 	};
 
 	handleDrawerOpen = () => {
@@ -29,12 +30,16 @@ class NewPaletteForm extends Component {
 		this.setState({ open: false });
 	};
 	colorChange = (color) => {
-		this.setState({ color: color.hex });
-	};
+      this.setState({ color: color.hex });
+      console.log(color)
+   };
+   addColor= ()=>{
+      this.setState(st=>({colors: [...st.colors, this.state.color]}))
+   }
 	render () {
 		const { classes } = this.props;
-		const { open, color } = this.state;
-
+		const { open, color, colors } = this.state;
+let newColors= colors.map(color=> (<div style={{backgroundColor:color}}><p>{color}</p></div>))
 		return (
 			<div className={classes.root}>
 				<CssBaseline />
@@ -54,7 +59,7 @@ class NewPaletteForm extends Component {
 							<MenuIcon />
 						</IconButton>
 						<Typography variant="h6" color="inherit" noWrap>
-							Persistent drawer
+							New Palette Form
 						</Typography>
 					</Toolbar>
 				</AppBar>
@@ -81,9 +86,9 @@ class NewPaletteForm extends Component {
 						<Button variant="contained">CLEAR PALETTE</Button>
 						<Button variant="contained">RANDOM COLOR</Button>
 					</div>
-					<ChromePicker className={classes.ChromePicker} color={color} onChangeComplete={this.colorChange} />
+					<ChromePicker className={classes.ChromePicker} color={color} onChange={this.colorChange} />
                <TextField className={classes.textInput} id="filled-basic" label="Color Name" variant="filled" />
-					<Button className={classes.submit} variant="contained" >
+					<Button style={{backgroundColor: color}} onClick={this.addColor} className={classes.submit} variant="contained" >
 						ADD COLOR
 					</Button>
                </div>
@@ -94,6 +99,8 @@ class NewPaletteForm extends Component {
 					})}
 				>
 					<div className={classes.drawerHeader} />
+               <p>hello world!</p>
+               {newColors}
 				</main>
 			</div>
 		);
