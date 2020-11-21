@@ -9,23 +9,28 @@ import './App.css';
 import { generatePalette } from './ColorHelper';
 
 class App extends Component {
+	state = { seed: SeedColors };
+
+	addPalette = (palette) => {
+		this.setState((st) => ({ seed: [ ...st.seed, palette ] }));
+	};
+
 	render () {
+		let { seed } = this.state;
 		let getPalettes = (props) => {
 			let name = props.match.params.paletteName;
-			let selPalette = SeedColors.find((palette) => palette.id === name);
+			let selPalette = seed.find((palette) => palette.id === name);
 			console.log(generatePalette(selPalette));
 			return <Palette {...props} palette={generatePalette(selPalette)} />;
 		};
 		let getColorSet = (props) => {
 			let name = props.match.params.paletteName;
 			let colorN = props.match.params.colorName;
-			let selPalette = SeedColors.find((palette) => palette.id === name);
+			let selPalette = seed.find((palette) => palette.id === name);
 			let palette = generatePalette(selPalette);
 			let selColor = [];
 			for (let color in palette.colors) {
-				// console.log(palette.colors[color]);
 				for (let number of palette.colors[color]) {
-					// console.log(number);
 					if (number.id === colorN) selColor.push(number);
 				}
 			}
@@ -33,19 +38,20 @@ class App extends Component {
 			selColor.shift();
 			return <ColorSet {...props} palInfo={palette} palette={selColor} />;
 		};
+
 		return (
 			<Switch>
 				<Route
 					exact
 					path="/"
 					render={(routeProps) => (
-						<Palettes {...routeProps} SeedColors={SeedColors} />
+						<Palettes {...routeProps} SeedColors={seed} />
 					)}
 				/>
 				<Route
 					exact
 					path="/palette/new"
-					render={(routeProps) => <NewPaletteForm {...routeProps} />}
+					render={(routeProps) => <NewPaletteForm {...routeProps} addPalette={this.addPalette}/>}
 				/>
 				<Route exact path="/palette/:paletteName" render={getPalettes} />
 				<Route

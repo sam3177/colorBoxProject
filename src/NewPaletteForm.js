@@ -31,7 +31,9 @@ class NewPaletteForm extends Component {
 			)
 		);
 		ValidatorForm.addValidationRule('isUniqueColor', () =>
-			this.state.colors.every((color) => this.state.color.toLowerCase() !== color.color.toLowerCase())
+			this.state.colors.every(
+				(color) => this.state.color.toLowerCase() !== color.color.toLowerCase()
+			)
 		);
 	}
 	handleDrawerOpen = () => {
@@ -43,7 +45,7 @@ class NewPaletteForm extends Component {
 	};
 	colorChange = (color) => {
 		this.setState({ color: color.hex });
-		console.log(color);
+		// console.log(color);
 	};
 	clearPalette = () => {
 		this.setState({ colors: [] });
@@ -70,7 +72,17 @@ class NewPaletteForm extends Component {
 				]
 			}));
 		}
-	};
+   };
+   addNewPalette=()=>{
+      let newPalette = {
+         paletteName : 'new Palette',
+		id          : 'new-palette',
+      emoji       : '🎨',
+      colors: this.state.colors
+      }
+      this.props.addPalette(newPalette)
+      this.props.history.goBack()
+   }
 	render () {
 		const { classes } = this.props;
 		const { open, color, colors, colorName } = this.state;
@@ -87,7 +99,7 @@ class NewPaletteForm extends Component {
 						[classes.appBarShift]: open
 					})}
 				>
-					<Toolbar disableGutters={!open}>
+					<Toolbar className={classes.toolbar} disableGutters={!open}>
 						<IconButton
 							color="inherit"
 							aria-label="Open drawer"
@@ -100,6 +112,21 @@ class NewPaletteForm extends Component {
 							New Palette Form
 						</Typography>
 					</Toolbar>
+					<div className={classes.navBtnContainer}>
+						<Button onClick={() => this.props.history.goBack()} variant="contained">
+							GO BACK
+						</Button>
+						<Button
+							disabled={!palSize}
+							onClick={this.addNewPalette}
+							variant="contained"
+						>
+							SAVE PALETTE
+							{/* {
+                           palSize ? 'RANDOM COLOR' :
+									'FULL PALETTE'} */}
+						</Button>
+					</div>
 				</AppBar>
 				<Drawer
 					className={classes.drawer}
@@ -118,12 +145,18 @@ class NewPaletteForm extends Component {
 					<Divider />
 					<div className={classes.drawerContent}>
 						<Typography variant="h5">Design Your Palette</Typography>
-						<div className={classes.btnContainer}>
+						<div className={classes.drawerBtnContainer}>
 							<Button onClick={this.clearPalette} variant="contained">
 								CLEAR PALETTE
 							</Button>
-							<Button onClick={this.getRandomColor} variant="contained">
-								RANDOM COLOR
+							<Button
+								disabled={!palSize}
+								onClick={this.getRandomColor}
+								variant="contained"
+							>
+								{
+									palSize ? 'RANDOM COLOR' :
+									'FULL PALETTE'}
 							</Button>
 						</div>
 						<ChromePicker

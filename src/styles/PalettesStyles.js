@@ -3,8 +3,8 @@ const styles = {
 		display         : 'flex',
 		justifyContent  : 'center',
 		alignItems      : 'flex-start',
-		backgroundColor : 'blue',
-		height          : '100vh'
+		backgroundColor : 'grey',
+		height          : '100%'
 	},
 	container : {
 		width         : '60%',

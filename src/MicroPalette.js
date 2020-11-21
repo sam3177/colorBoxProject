@@ -12,7 +12,7 @@ class MicroPalette extends Component {
 				style={{ backgroundColor: color.color }}
 			/>
 		));
-		console.log(colorSet);
+		// console.log(colorSet);
 		return (
 			<div onClick={handleClick} className={classes.root}>
 				<div className={classes.colors}>{colorSet}</div>
