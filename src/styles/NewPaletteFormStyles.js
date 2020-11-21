@@ -44,7 +44,7 @@ const styles = (theme) => ({
 		width                    : '100%',
 		'& button'               : {
 			fontSize : '10px',
-			color:'white',
+			color    : 'white',
 			width    : '50%'
 		},
 		'& button:first-of-type' : {
@@ -59,9 +59,9 @@ const styles = (theme) => ({
 		// marginTop: '40px'
 	},
 	textInput     : {
-		width     : '100%',
+		width  : '100%',
 		// height: '10px',
-		margin    : '15px 0',
+		margin : '15px 0'
 		// '& input' : {
 		// 	padding : '10px 0 10px 0'
 		// },
@@ -69,9 +69,26 @@ const styles = (theme) => ({
 		// 	bottom:'30px!important'
 		// }
 	},
-	submit:{
-		width: '100%',
-		height:'50px',
+	validatorForm : {
+		// border          : '1px solid red',
+		width           : '100%',
+	},
+	textValidator : {
+		backgroundColor : 'rgb(0,0,0,.3)',
+		borderRadius:'5px 5px 0 0',
+		margin: '15px 0',
+		width     : '100%',
+		// padding:'15px 0',
+		'& label' : {
+			margin : '0 15px'
+		},
+		'& input':{
+			margin:'0 15px'
+		}
+	},
+	submit        : {
+		width  : '100%',
+		height : '50px'
 		// backgroundColor:'#31E2ED'
 	},
 	drawerPaper   : {
@@ -85,9 +102,9 @@ const styles = (theme) => ({
 		justifyContent : 'flex-end'
 	},
 	content       : {
-		marginTop: '69px',
-		width:'100%',
-		height:'calc(100vh - 69px)',
+		marginTop  : '69px',
+		width      : '100%',
+		height     : 'calc(100vh - 69px)',
 		// display: 'flex',
 		// flexWrap:'wrap',
 		// alignItems: 'flex-start',
