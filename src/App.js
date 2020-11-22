@@ -51,7 +51,7 @@ class App extends Component {
 				<Route
 					exact
 					path="/palette/new"
-					render={(routeProps) => <NewPaletteForm {...routeProps} addPalette={this.addPalette}/>}
+					render={(routeProps) => <NewPaletteForm {...routeProps} seed={seed} addPalette={this.addPalette}/>}
 				/>
 				<Route exact path="/palette/:paletteName" render={getPalettes} />
 				<Route

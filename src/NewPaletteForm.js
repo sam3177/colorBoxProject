@@ -19,10 +19,12 @@ import seed from './SeedColors';
 
 class NewPaletteForm extends Component {
 	state = {
-		open      : true,
-		color     : 'green',
-		colors    : seed[0].colors,
-		colorName : ''
+		open        : true,
+		color       : 'green',
+		colors      : seed[0].colors,
+		colorName   : '',
+		paletteName : '',
+		showPopup   : false
 	};
 	componentDidMount () {
 		ValidatorForm.addValidationRule('isUniqueColorName', (value) =>
@@ -33,6 +35,13 @@ class NewPaletteForm extends Component {
 		ValidatorForm.addValidationRule('isUniqueColor', () =>
 			this.state.colors.every(
 				(color) => this.state.color.toLowerCase() !== color.color.toLowerCase()
+			)
+		);
+		ValidatorForm.addValidationRule('isUniquePaletteName', () =>
+			this.props.seed.every(
+				(palette) =>
+					this.state.paletteName.toLowerCase() !==
+					palette.paletteName.toLowerCase()
 			)
 		);
 	}
@@ -50,7 +59,7 @@ class NewPaletteForm extends Component {
 	clearPalette = () => {
 		this.setState({ colors: [] });
 	};
-	handleSubmit = (e) => {
+	addNewColor = (e) => {
 		this.setState((st) => ({
 			colors    : [
 				...st.colors,
@@ -59,8 +68,11 @@ class NewPaletteForm extends Component {
 			colorName : ''
 		}));
 	};
-	handleChange = (e) => {
+	changeColorName = (e) => {
 		this.setState({ colorName: e.target.value });
+	};
+	changePaletteName = (e) => {
+		this.setState({ paletteName: e.target.value });
 	};
 	getRandomColor = () => {
 		let idx = Math.floor(Math.random() * seed[0].colors.length);
@@ -72,22 +84,35 @@ class NewPaletteForm extends Component {
 				]
 			}));
 		}
-   };
-   addNewPalette=()=>{
-      let newPalette = {
-         paletteName : 'new Palette',
-		id          : 'new-palette',
-      emoji       : '🎨',
-      colors: this.state.colors
-      }
-      this.props.addPalette(newPalette)
-      this.props.history.goBack()
-   }
+	};
+	addNewPalette = () => {
+		let newPalette = {
+			paletteName : this.state.paletteName,
+			id          : this.state.paletteName.toLowerCase().replace(/ /g, '-'),
+			emoji       : '🎨',
+			colors      : this.state.colors
+		};
+		this.props.addPalette(newPalette);
+		this.props.history.goBack();
+	};
+	deleteColorBox = (selColor) => {
+		let newColors = this.state.colors.filter(color => color !== selColor);
+		this.setState({ colors: newColors });
+	}
 	render () {
 		const { classes } = this.props;
-		const { open, color, colors, colorName } = this.state;
+		const {
+			open,
+			color,
+			colors,
+			colorName,
+			paletteName,
+			showPopup
+		} = this.state;
 		let newColors = colors.map((color) => (
-			<DraggableColorBox key={color.name} color={color} />
+			<DraggableColorBox key={color.name}
+			deleteColor = {this.deleteColorBox}
+			color={color} />
 		));
 		let palSize = colors.length < 20;
 		return (
@@ -98,6 +123,7 @@ class NewPaletteForm extends Component {
 					className={classNames(classes.appBar, {
 						[classes.appBarShift]: open
 					})}
+					color="default"
 				>
 					<Toolbar className={classes.toolbar} disableGutters={!open}>
 						<IconButton
@@ -113,19 +139,49 @@ class NewPaletteForm extends Component {
 						</Typography>
 					</Toolbar>
 					<div className={classes.navBtnContainer}>
-						<Button onClick={() => this.props.history.goBack()} variant="contained">
+						<Button
+							onClick={() => this.props.history.goBack()}
+							variant="contained"
+						>
 							GO BACK
 						</Button>
 						<Button
-							disabled={!palSize}
-							onClick={this.addNewPalette}
+							onClick={() => this.setState({ showPopup: true })}
 							variant="contained"
 						>
 							SAVE PALETTE
-							{/* {
-                           palSize ? 'RANDOM COLOR' :
-									'FULL PALETTE'} */}
 						</Button>
+					</div>
+					<div
+						className={classNames(classes.savePalettePopup, {
+							[classes.showPopup]: showPopup
+						})}
+					>
+						<ValidatorForm
+							className={classes.validatorPaletteForm}
+							onSubmit={this.addNewPalette}
+						>
+							<Typography variant="h5">Add a Palette Name</Typography>
+							<TextValidator
+								className={classes.textValidator}
+								label="Palette Name"
+								onChange={this.changePaletteName}
+								value={paletteName}
+								validators={[ 'required', 'isUniquePaletteName' ]}
+								errorMessages={[
+									'This field is required',
+									'Palette Name already in use'
+								]}
+							/>
+							<Button
+								type="submit"
+								// onClick={this.addNewColor}
+								className={classes.paletteSubmit}
+								variant="contained"
+							>
+								ADD PALETTE
+							</Button>
+						</ValidatorForm>
 					</div>
 				</AppBar>
 				<Drawer
@@ -167,12 +223,12 @@ class NewPaletteForm extends Component {
 						/>
 						<ValidatorForm
 							className={classes.validatorForm}
-							onSubmit={this.handleSubmit}
+							onSubmit={this.addNewColor}
 						>
 							<TextValidator
 								className={classes.textValidator}
 								label="Color Name"
-								onChange={this.handleChange}
+								onChange={this.changeColorName}
 								value={colorName}
 								validators={[
 									'required',
@@ -188,8 +244,8 @@ class NewPaletteForm extends Component {
 							<Button
 								type="submit"
 								style={{ backgroundColor: color }}
-								onClick={this.addColor}
-								className={classes.submit}
+								// onClick={this.addColor}
+								className={classes.colorSubmit}
 								variant="contained"
 								disabled={!palSize}
 							>

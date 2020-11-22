@@ -1,18 +1,30 @@
 import React, { Component } from 'react';
+import DeleteIcon from '@material-ui/icons/Delete';
+
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles/DraggableColorBoxStyles';
 
-
 class DraggableColorBox extends Component {
+	deleteColorBox = () => {
+		this.props.deleteColor(this.props.color);
+	};
 	render () {
 		let { color, classes } = this.props;
 		return (
-			<div className={classes.colorBox}
+			<div
+				className={classes.colorBox}
 				style={{
 					backgroundColor : color.color
 				}}
 			>
-				<p>{color.name}</p>
+				<div className={classes.content}>
+					<span>{color.name}</span>
+
+					<DeleteIcon
+						onClick={this.deleteColorBox}
+						className={classes.deleteColorBox}
+					/>
+				</div>
 			</div>
 		);
 	}
