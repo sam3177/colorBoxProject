@@ -168,9 +168,9 @@ const styles = (theme) => ({
 		justifyContent : 'flex-end'
 	},
 	content              : {
-		marginTop  : '69px',
+		marginTop  : '8vh',
 		width      : '100%',
-		height     : 'calc(100vh - 69px)',
+		height     : '92vh',
 		// display: 'flex',
 		// flexWrap:'wrap',
 		// alignItems: 'flex-start',

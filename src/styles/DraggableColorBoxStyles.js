@@ -4,7 +4,8 @@ const styles = {
 		height    : '25%',
 		position  : 'relative',
 		display   : 'inline-block',
-		cursor    : 'pointer',
+      cursor    : 'pointer',
+      // float: 'left',
 		marginTop : '-5px',
 		// alignItems: 'flex-end',
 		// '& p'     : {

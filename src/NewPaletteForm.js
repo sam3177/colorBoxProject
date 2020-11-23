@@ -12,7 +12,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import styles from './styles/NewPaletteFormStyles';
-import DraggableColorBox from './DraggableColorBox';
+import DraggableColorList from './DraggableColorList';
 import { ChromePicker } from 'react-color';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import seed from './SeedColors';
@@ -109,11 +109,11 @@ class NewPaletteForm extends Component {
 			paletteName,
 			showPopup
 		} = this.state;
-		let newColors = colors.map((color) => (
-			<DraggableColorBox key={color.name}
-			deleteColor = {this.deleteColorBox}
-			color={color} />
-		));
+		// let newColors = colors.map((color) => (
+		// 	<DraggableColorBox key={color.name}
+		// 	deleteColor = {this.deleteColorBox}
+		// 	color={color} />
+		// ));
 		let palSize = colors.length < 20;
 		return (
 			<div className={classes.root}>
@@ -261,7 +261,7 @@ class NewPaletteForm extends Component {
 						[classes.contentShift]: open
 					})}
 				>
-					{newColors}
+					<DraggableColorList colors={colors} deleteColorBox={this.deleteColorBox}/>
 				</main>
 			</div>
 		);
