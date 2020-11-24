@@ -14,6 +14,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import styles from './styles/NewPaletteFormStyles';
 import DraggableColorList from './DraggableColorList';
 import { ChromePicker } from 'react-color';
+import {arrayMove} from 'react-sortable-hoc';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import seed from './SeedColors';
 
@@ -96,9 +97,14 @@ class NewPaletteForm extends Component {
 		this.props.history.goBack();
 	};
 	deleteColorBox = (selColor) => {
-		let newColors = this.state.colors.filter(color => color !== selColor);
+		let newColors = this.state.colors.filter((color) => color !== selColor);
 		this.setState({ colors: newColors });
-	}
+	};
+	onSortEnd = ({ oldIndex, newIndex }) => {
+		this.setState(({ colors }) => ({
+			colors : arrayMove(colors, oldIndex, newIndex)
+		}));
+	};
 	render () {
 		const { classes } = this.props;
 		const {
@@ -261,7 +267,12 @@ class NewPaletteForm extends Component {
 						[classes.contentShift]: open
 					})}
 				>
-					<DraggableColorList colors={colors} deleteColorBox={this.deleteColorBox}/>
+					<DraggableColorList
+						axis="xy"
+						colors={colors}
+						deleteColorBox={this.deleteColorBox}
+						onSortEnd={this.onSortEnd}
+					/>
 				</main>
 			</div>
 		);
