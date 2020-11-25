@@ -27,24 +27,25 @@ const styles = (theme) => ({
 		width : '50%'
 	},
 	navBtnContainer      : {
-		display                  : 'flex',
-		justifyContent           : 'flex-end',
-		alignItems               : 'center',
-		margin                   : '15px 0',
-		width                    : '40%',
-		padding                  : '0 24px',
-		'& button'               : {
-			fontSize : '10px',
-			color    : 'white',
-			width    : 'fit-content',
-			height   : '1.5rem'
-		},
-		'& button:first-of-type' : {
-			backgroundColor : '#ED6A52',
-			marginRight     : '2rem'
-		},
-		'& button:last-of-type'  : {
+		display        : 'flex',
+		justifyContent : 'flex-end',
+		alignItems     : 'center',
+		margin         : '15px 0',
+		width          : '40%',
+		padding        : '0 24px',
+		'& button'     : {
+			fontSize        : '10px',
+			color           : 'white',
+			width           : 'fit-content',
+			height          : '1.5rem',
 			backgroundColor : '#7B50F0'
+		},
+		'& a'          : {
+			textDecoration : 'none',
+			'& button' : {
+				backgroundColor : '#ED6A52',
+				marginRight     : '2rem'
+			}
 		}
 	},
 	savePalettePopup     : {
@@ -58,7 +59,7 @@ const styles = (theme) => ({
 		borderRadius    : '10px',
 		display         : 'none'
 	},
-	showPopup:{display: 'block'},
+	showPopup            : { display: 'block' },
 
 	paletteSubmit        : {
 		margin : '0 auto'
@@ -71,11 +72,11 @@ const styles = (theme) => ({
 		// justifyContent: 'center',
 		// alignItems: 'center',
 		'& button'    : {
-			backgroundColor:'#7B50F0',
-			position : 'absolute',
-			bottom   : '30px',
-			right    : '30%',
-			width    : '40%'
+			backgroundColor : '#7B50F0',
+			position        : 'absolute',
+			bottom          : '30px',
+			right           : '30%',
+			width           : '40%'
 		},
 		'& h5'        : {
 			display : 'inline-block',

@@ -7,8 +7,9 @@ let styles = {
 	root : {
 		// backgroundColor : 'pink',
       height : '99%',
-      width : '99%', 
-      margin:'auto',
+      width : '100%', 
+      margin:'0 auto',
+      overFlow:'hidden',
       marginTop:'5px'
 	}
 };

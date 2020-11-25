@@ -6,14 +6,9 @@ const styles = {
 		display   : 'inline-block',
       cursor    : 'pointer',
       // float: 'left',
+      marginLeft :'0',
 		marginTop : '-5px',
-		// alignItems: 'flex-end',
-		// '& p'     : {
-		// 	position : 'absolute',
-		// 	bottom   : '10px',
-		// 	left     : '10px',
-		// 	margin   : 0
-		// },
+	
 		'&:hover' : {
 			'& svg' : {
             transform : 'scale(2.0)',

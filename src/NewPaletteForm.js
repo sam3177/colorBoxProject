@@ -3,13 +3,11 @@ import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
+import AppNavBar from './AppBar';
 import Button from '@material-ui/core/Button';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import styles from './styles/NewPaletteFormStyles';
 import DraggableColorList from './DraggableColorList';
@@ -72,9 +70,7 @@ class NewPaletteForm extends Component {
 	changeColorName = (e) => {
 		this.setState({ colorName: e.target.value });
 	};
-	changePaletteName = (e) => {
-		this.setState({ paletteName: e.target.value });
-	};
+
 	getRandomColor = () => {
 		let allColors = seed.map((palette) => palette.colors).flat();
 		let idx = Math.floor(Math.random() * allColors.length);
@@ -92,10 +88,11 @@ class NewPaletteForm extends Component {
 			}
 		}
 	};
-	addNewPalette = () => {
+
+	addNewPalette = (palName) => {
 		let newPalette = {
-			paletteName : this.state.paletteName,
-			id          : this.state.paletteName.toLowerCase().replace(/ /g, '-'),
+			paletteName : palName,
+			id          : palName.toLowerCase().replace(/ /g, '-'),
 			emoji       : '🎨',
 			colors      : this.state.colors
 		};
@@ -130,72 +127,11 @@ class NewPaletteForm extends Component {
 		return (
 			<div className={classes.root}>
 				<CssBaseline />
-				<AppBar
-					position="fixed"
-					className={classNames(classes.appBar, {
-						[classes.appBarShift]: open
-					})}
-					color="default"
-				>
-					<Toolbar className={classes.toolbar} disableGutters={!open}>
-						<IconButton
-							color="inherit"
-							aria-label="Open drawer"
-							onClick={this.handleDrawerOpen}
-							className={classNames(classes.menuButton, open && classes.hide)}
-						>
-							<MenuIcon />
-						</IconButton>
-						<Typography variant="h6" color="inherit" noWrap>
-							New Palette Form
-						</Typography>
-					</Toolbar>
-					<div className={classes.navBtnContainer}>
-						<Button
-							onClick={() => this.props.history.goBack()}
-							variant="contained"
-						>
-							GO BACK
-						</Button>
-						<Button
-							onClick={() => this.setState({ showPopup: true })}
-							variant="contained"
-						>
-							SAVE PALETTE
-						</Button>
-					</div>
-					<div
-						className={classNames(classes.savePalettePopup, {
-							[classes.showPopup]: showPopup
-						})}
-					>
-						<ValidatorForm
-							className={classes.validatorPaletteForm}
-							onSubmit={this.addNewPalette}
-						>
-							<Typography variant="h5">Add a Palette Name</Typography>
-							<TextValidator
-								className={classes.textValidator}
-								label="Palette Name"
-								onChange={this.changePaletteName}
-								value={paletteName}
-								validators={[ 'required', 'isUniquePaletteName' ]}
-								errorMessages={[
-									'This field is required',
-									'Palette Name already in use'
-								]}
-							/>
-							<Button
-								type="submit"
-								// onClick={this.addNewColor}
-								className={classes.paletteSubmit}
-								variant="contained"
-							>
-								ADD PALETTE
-							</Button>
-						</ValidatorForm>
-					</div>
-				</AppBar>
+				<AppNavBar
+					open={open}
+					addNewPalette={this.addNewPalette}
+					handleDrawerOpen={this.handleDrawerOpen}
+				/>
 				<Drawer
 					className={classes.drawer}
 					variant="persistent"
