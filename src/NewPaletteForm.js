@@ -14,7 +14,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import styles from './styles/NewPaletteFormStyles';
 import DraggableColorList from './DraggableColorList';
 import { ChromePicker } from 'react-color';
-import {arrayMove} from 'react-sortable-hoc';
+import { arrayMove } from 'react-sortable-hoc';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import seed from './SeedColors';
 
@@ -76,14 +76,20 @@ class NewPaletteForm extends Component {
 		this.setState({ paletteName: e.target.value });
 	};
 	getRandomColor = () => {
-		let idx = Math.floor(Math.random() * seed[0].colors.length);
+		let allColors = seed.map((palette) => palette.colors).flat();
+		let idx = Math.floor(Math.random() * allColors.length);
+		console.log(allColors);
+		console.log(idx);
+
 		if (this.state.colors.length < 20) {
-			this.setState((st) => ({
-				colors : [
-					...st.colors,
-					{ name: seed[0].colors[idx].name, color: seed[0].colors[idx].color }
-				]
-			}));
+			const pickedColor = allColors[idx];
+			console.log(pickedColor);
+
+			if (!this.state.colors.includes(pickedColor)) {
+				this.setState((st) => ({
+					colors : [ ...st.colors, pickedColor ]
+				}));
+			}
 		}
 	};
 	addNewPalette = () => {
