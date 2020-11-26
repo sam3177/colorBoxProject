@@ -22,7 +22,6 @@ class NewPaletteForm extends Component {
 		color       : 'green',
 		colors      : seed[0].colors,
 		colorName   : '',
-		paletteName : '',
 		showPopup   : false
 	};
 	componentDidMount () {
@@ -36,13 +35,7 @@ class NewPaletteForm extends Component {
 				(color) => this.state.color.toLowerCase() !== color.color.toLowerCase()
 			)
 		);
-		ValidatorForm.addValidationRule('isUniquePaletteName', () =>
-			this.props.seed.every(
-				(palette) =>
-					this.state.paletteName.toLowerCase() !==
-					palette.paletteName.toLowerCase()
-			)
-		);
+		
 	}
 	handleDrawerOpen = () => {
 		this.setState({ open: true });
@@ -114,9 +107,7 @@ class NewPaletteForm extends Component {
 			open,
 			color,
 			colors,
-			colorName,
-			paletteName,
-			showPopup
+			colorName
 		} = this.state;
 		// let newColors = colors.map((color) => (
 		// 	<DraggableColorBox key={color.name}
@@ -128,6 +119,7 @@ class NewPaletteForm extends Component {
 			<div className={classes.root}>
 				<CssBaseline />
 				<AppNavBar
+				seed={seed}
 					open={open}
 					addNewPalette={this.addNewPalette}
 					handleDrawerOpen={this.handleDrawerOpen}

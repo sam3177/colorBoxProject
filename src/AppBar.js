@@ -13,6 +13,15 @@ import styles from './styles/NewPaletteFormStyles';
 
 class AppNavBar extends Component {
 	state = { showPopup: false, paletteName: '' };
+	componentDidMount() {
+		ValidatorForm.addValidationRule('isUniquePaletteName', () =>
+			this.props.seed.every(
+				(palette) =>
+					this.state.paletteName.toLowerCase() !==
+					palette.paletteName.toLowerCase()
+			)
+		);
+	}
 	changePaletteName = (e) => {
 		this.setState({ paletteName: e.target.value });
 	};
