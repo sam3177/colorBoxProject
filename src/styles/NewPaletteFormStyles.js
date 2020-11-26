@@ -4,6 +4,10 @@ const styles = (theme) => ({
 	root                 : {
 		display : 'flex'
 	},
+	formContainer : {
+		
+		width:'100%',
+	},
 	appBar               : {
 		// 	'linear-gradient(135deg, rgba(237,1,214,1) 50%, rgba(9,245,32,1) 50%)',
 		// backgroundColor:'gray',
