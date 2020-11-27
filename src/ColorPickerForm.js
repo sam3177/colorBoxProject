@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import classNames from 'classnames';
+// import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { ChromePicker } from 'react-color';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-import styles from './styles/NewPaletteFormStyles';
+import styles from './styles/ColorPickerFormStyles';
 
-import seed from './SeedColors';
+// import seed from './SeedColors';
 
 class ColorPickerForm extends Component {
 	state = { color: 'green', name: '' };
@@ -30,7 +30,8 @@ class ColorPickerForm extends Component {
 		this.setState({ name: e.target.value });
 	};
 	addNewColor = () => {
-		this.props.addNewColor(this.state);
+      this.props.addNewColor(this.state);
+      this.setState({name: ''});
 	};
 	render () {
 		let { classes, colors } = this.props;

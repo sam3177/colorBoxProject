@@ -9,7 +9,7 @@ import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { withStyles } from '@material-ui/core/styles';
-import styles from './styles/NewPaletteFormStyles';
+import styles from './styles/AppBarStyles';
 
 class AppNavBar extends Component {
 	state = { showPopup: false, paletteName: '' };
@@ -99,4 +99,4 @@ class AppNavBar extends Component {
 	}
 }
 
-export default withStyles(styles)(AppNavBar);
+export default withStyles(styles, {withTheme: true})(AppNavBar);
