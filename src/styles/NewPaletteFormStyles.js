@@ -175,7 +175,7 @@ const styles = (theme) => ({
 		justifyContent : 'flex-end'
 	},
 	content              : {
-		// marginTop  : '10%',
+		padding:'0',
 		width      : '100%',
 		height     : 'calc(100% - 64px)',
 		// display: 'flex',

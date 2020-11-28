@@ -3,11 +3,11 @@ const styles = {
 		width     : '20%',
 		height    : '25%',
 		position  : 'relative',
-		display   : 'inline-block',
+		// display   : 'inline-block',
       cursor    : 'pointer',
-      // float: 'left',
+      float: 'left',
       marginLeft :'0',
-		marginTop : '-5px',
+		// marginTop : '-5px',
 	
 		'&:hover' : {
 			'& svg' : {

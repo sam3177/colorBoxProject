@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
-import MenuIcon from '@material-ui/icons/Menu';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
@@ -31,7 +31,7 @@ class AppNavBar extends Component {
 						onClick={handleDrawerOpen}
 						className={classNames(classes.menuButton, open && classes.hide)}
 					>
-						<MenuIcon />
+						<ChevronRightIcon/>
 					</IconButton>
 					<Typography variant="h6" color="inherit" noWrap>
 						New Palette Form

@@ -2,17 +2,7 @@ import React, { Component } from 'react';
 import DraggableColorBox from './DraggableColorBox';
 import { SortableContainer } from 'react-sortable-hoc';
 import { withStyles } from '@material-ui/core/styles';
-
-let styles = {
-	root : {
-		// backgroundColor : 'pink',
-      height : '100%',
-      width : '99%', 
-      margin:'0 auto',
-      overFlow:'hidden',
-      // marginTop:'5px'
-	}
-};
+import styles from './styles/DraggableColorListStyles'
 
 class DraggableColorList extends Component {
 	render () {

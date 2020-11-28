@@ -9,12 +9,15 @@ import './App.css';
 import { generatePalette } from './ColorHelper';
 
 class App extends Component {
-	state = { seed: SeedColors };
+	savedPalettes = JSON.parse(window.localStorage.getItem('savedPalettes'))
+	state = { seed: this.savedPalettes || SeedColors };
 
 	addPalette = (palette) => {
-		this.setState((st) => ({ seed: [ ...st.seed, palette ] }));
+		this.setState((st) => ({ seed: [ ...st.seed, palette ] }), this.saveToLocal);
 	};
-
+saveToLocal =()=>{
+	window.localStorage.setItem('savedPalettes', JSON.stringify(this.state.seed))
+}
 	render () {
 		let { seed } = this.state;
 		let getPalettes = (props) => {
