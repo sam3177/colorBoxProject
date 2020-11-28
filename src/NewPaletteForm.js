@@ -13,13 +13,13 @@ import styles from './styles/NewPaletteFormStyles';
 import DraggableColorList from './DraggableColorList';
 import ColorPickerForm from './ColorPickerForm';
 import { arrayMove } from 'react-sortable-hoc';
-import seed from './SeedColors';
+// import seed from './SeedColors';
 
 class NewPaletteForm extends Component {
 	state = {
 		open   : true,
 
-		colors : seed[0].colors
+		colors : this.props.seed[0].colors
 	};
 
 	handleDrawerOpen = () => {
@@ -41,7 +41,7 @@ class NewPaletteForm extends Component {
 	};
 
 	getRandomColor = () => {
-		let allColors = seed.map((palette) => palette.colors).flat();
+		let allColors = this.props.seed.map((palette) => palette.colors).flat();
 		let idx = Math.floor(Math.random() * allColors.length);
 		
 
@@ -57,11 +57,11 @@ class NewPaletteForm extends Component {
 		}
 	};
 
-	addNewPalette = (palName) => {
+	addNewPalette = ({palName, emoji}) => {
 		let newPalette = {
 			paletteName : palName,
 			id          : palName.toLowerCase().replace(/ /g, '-'),
-			emoji       : '🎨',
+			emoji       : emoji,
 			colors      : this.state.colors
 		};
 		this.props.addPalette(newPalette);
@@ -77,8 +77,8 @@ class NewPaletteForm extends Component {
 		}));
 	};
 	render () {
-		const { classes } = this.props;
-		const { open, color, colors, colorName } = this.state;
+		const { classes,seed } = this.props;
+		const { open, colors,} = this.state;
 		// let newColors = colors.map((color) => (
 		// 	<DraggableColorBox key={color.name}
 		// 	deleteColor = {this.deleteColorBox}
@@ -116,7 +116,6 @@ class NewPaletteForm extends Component {
 								CLEAR PALETTE
 							</Button>
 							<Button
-								disabled={!palSize}
 								onClick={this.getRandomColor}
 								variant="contained"
 								disabled={!palSize}
@@ -129,7 +128,7 @@ class NewPaletteForm extends Component {
 						<ColorPickerForm
 							colors={colors}
 							addNewColor={this.addNewColor}
-							colors={colors}
+							
 						/>
 					</div>
 				</Drawer>

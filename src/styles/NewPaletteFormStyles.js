@@ -1,8 +1,10 @@
-const drawerWidth = 270;
+const drawerWidth = 370;
 
 const styles = (theme) => ({
 	root                 : {
-		display : 'flex'
+		display : 'flex',
+		alignItems : 'flex-end',
+		height :'100%'
 	},
 	// formContainer : {
 		
@@ -173,9 +175,9 @@ const styles = (theme) => ({
 		justifyContent : 'flex-end'
 	},
 	content              : {
-		marginTop  : '8vh',
+		// marginTop  : '10%',
 		width      : '100%',
-		height     : '92vh',
+		height     : 'calc(100% - 64px)',
 		// display: 'flex',
 		// flexWrap:'wrap',
 		// alignItems: 'flex-start',

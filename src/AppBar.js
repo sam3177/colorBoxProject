@@ -5,32 +5,17 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import MetaFormDialog from './MetaFormDialog'
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles/AppBarStyles';
 
 class AppNavBar extends Component {
-	state = { showPopup: false, paletteName: '' };
-	componentDidMount() {
-		ValidatorForm.addValidationRule('isUniquePaletteName', () =>
-			this.props.seed.every(
-				(palette) =>
-					this.state.paletteName.toLowerCase() !==
-					palette.paletteName.toLowerCase()
-			)
-		);
-	}
-	changePaletteName = (e) => {
-		this.setState({ paletteName: e.target.value });
-	};
-	addNewPalette = () => {
-		this.props.addNewPalette(this.state.paletteName);
-	};
+	
+	
 	render () {
-		let { open, classes, handleDrawerOpen } = this.props;
-		let { showPopup, paletteName } = this.state;
+		let { open, classes, handleDrawerOpen , seed, addNewPalette } = this.props;
 		return (
 			<AppBar
 				position="fixed"
@@ -56,14 +41,10 @@ class AppNavBar extends Component {
 					<Link to="/">
 						<Button variant="contained">GO BACK</Button>
 					</Link>
-					<Button
-						onClick={() => this.setState({ showPopup: true })}
-						variant="contained"
-					>
-						SAVE PALETTE
-					</Button>
+					<MetaFormDialog seed={seed} addNewPalette={addNewPalette}/>
+
 				</div>
-				<div
+				{/* <div
 					className={classNames(classes.savePalettePopup, {
 						[classes.showPopup]: showPopup
 					})}
@@ -93,7 +74,7 @@ class AppNavBar extends Component {
 							ADD PALETTE
 						</Button>
 					</ValidatorForm>
-				</div>
+				</div> */}
 			</AppBar>
 		);
 	}

@@ -6,11 +6,11 @@ import { withStyles } from '@material-ui/core/styles';
 let styles = {
 	root : {
 		// backgroundColor : 'pink',
-      height : '95%',
-      width : '95%', 
+      height : '100%',
+      width : '99%', 
       margin:'0 auto',
       overFlow:'hidden',
-      marginTop:'5px'
+      // marginTop:'5px'
 	}
 };
 

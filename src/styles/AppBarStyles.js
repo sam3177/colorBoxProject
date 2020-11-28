@@ -1,11 +1,11 @@
-const drawerWidth = 270;
+const drawerWidth = 370;
 
 const styles = (theme) => ({
 	appBar               : {
 		// 	'linear-gradient(135deg, rgba(237,1,214,1) 50%, rgba(9,245,32,1) 50%)',
 		// backgroundColor:'gray',
 		display        : 'flex',
-		flexDirection  : 'row',
+      flexDirection  : 'row',
 		justifyContent : 'space-between',
 		transition     : theme.transitions.create([ 'margin', 'width' ], {
 			easing   : theme.transitions.easing.sharp,
@@ -39,7 +39,7 @@ const styles = (theme) => ({
 		padding        : '0 24px',
 		'& button'     : {
 			fontSize        : '10px',
-			color           : 'white',
+			// color           : 'white',
 			width           : 'fit-content',
 			height          : '1.5rem',
 			backgroundColor : '#7B50F0'
