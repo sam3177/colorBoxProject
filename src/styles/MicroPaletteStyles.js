@@ -1,8 +1,8 @@
 const styles = {
-	link   : {
+	link        : {
 		textDecoration : 'none'
 	},
-	root   : {
+	root        : {
 		backgroundColor : 'white',
 		border          : '1px solid black',
 		borderRadius    : '5px',
@@ -14,51 +14,68 @@ const styles = {
 		display         : 'flex',
 		flexDirection   : 'column',
 		justifyContent  : 'flex-end',
-		cursor          : 'pointer'
+		cursor          : 'pointer',
+		'&:hover'       : {
+			'& span' : {
+				opacity : 1
+			}
+		}
 	},
-	colors : {
-		display         : 'flex',
-		flexWrap        : 'wrap',
-		backgroundColor : 'grey',
-		width           : '95%',
-		height          : '9vh',
-		// borderRadius    : '5px',
-		overFlow        : 'hidden',
-		// border       : '1px solid black',
-		margin          : '0 auto'
-
-		// '& .color' : {
-		// 	width  : '20%',
-		// 	height : '20px'
-		// },
-		// '& .color:nth-of-type(1)' : {
-		//    borderRadius : '5px 0 0 0'
-		// },
-		// '& .color:nth-of-type(5)':{
-		//    borderRadius : '0 5px 0 0'
-		// },
-		// '& .color:nth-of-type(16)':{
-		//    borderRadius : '0 0 0 5px'
-		// },
-		// '& .color:nth-of-type(20)':{
-		//    borderRadius : '0 0 5px 0'
-		// }
-	},
-
-	color  : {
+	color       : {
 		width    : '20%',
 		height   : '25%',
 		display  : 'inline-block',
-		// margin       : '0 auto',
+		margin   : '0',
 		position : 'relative'
 		// marginBottom : '-3px'
 	},
+	colors      : {
+		display                 : 'flex',
+		flexWrap                : 'wrap',
+		// float:'left',
+		backgroundColor         : 'grey',
+		width                   : '95%',
+		height                  : '9vh',
+		borderRadius            : '5px',
+		overFlow                : 'hidden',
+		// border       : '1px solid black',
+		margin                  : '10px auto',
 
-	title  : {
+		'& div:nth-of-type(1)'  : {
+			borderRadius : '5px 0 0 0'
+		},
+		'& div:nth-of-type(5)'  : {
+			borderRadius : '0 5px 0 0'
+		},
+		'& div:nth-of-type(16)' : {
+			borderRadius : '0 0 0 5px'
+		},
+		'& div:nth-of-type(20)' : {
+			borderRadius : '0 0 5px 0'
+		}
+	},
+
+	title       : {
 		display        : 'flex',
 		justifyContent : 'space-between',
 		alignItems     : 'center',
 		margin         : '5px'
+	},
+	deleteFloat : {
+		position        : 'absolute',
+		right           : '0',
+		top             : '0',
+		width           : '10%',
+		height          : '20%',
+		borderRadius    : '0 4px 0 0',
+		display         : 'flex',
+		justifyContent  : 'center',
+		alignItems      : 'center',
+		backgroundColor : 'red',
+		fontSize        : '1.5rem',
+		zIndex          : '66',
+		opacity         : '0',
+		transition             : 'all 0.3s ease-in-out'
 	}
 };
 export default styles;

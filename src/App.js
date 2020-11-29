@@ -9,15 +9,25 @@ import './App.css';
 import { generatePalette } from './ColorHelper';
 
 class App extends Component {
-	savedPalettes = JSON.parse(window.localStorage.getItem('savedPalettes'))
+	savedPalettes = JSON.parse(window.localStorage.getItem('savedPalettes'));
 	state = { seed: this.savedPalettes || SeedColors };
 
 	addPalette = (palette) => {
-		this.setState((st) => ({ seed: [ ...st.seed, palette ] }), this.saveToLocal);
+		this.setState(
+			(st) => ({ seed: [ ...st.seed, palette ] }),
+			this.saveToLocal
+		);
 	};
-saveToLocal =()=>{
-	window.localStorage.setItem('savedPalettes', JSON.stringify(this.state.seed))
-}
+	saveToLocal = () => {
+		window.localStorage.setItem(
+			'savedPalettes',
+			JSON.stringify(this.state.seed)
+		);
+	};
+	deletePalette = (palette) => {
+		let newSeed = this.state.seed.filter((pal) =>pal !== palette);
+		this.setState({ seed: newSeed }, this.saveToLocal);
+	};
 	render () {
 		let { seed } = this.state;
 		let getPalettes = (props) => {
@@ -48,13 +58,23 @@ saveToLocal =()=>{
 					exact
 					path="/"
 					render={(routeProps) => (
-						<Palettes {...routeProps} SeedColors={seed} />
+						<Palettes
+							{...routeProps}
+							deletePalette={this.deletePalette}
+							SeedColors={seed}
+						/>
 					)}
 				/>
 				<Route
 					exact
 					path="/palette/new"
-					render={(routeProps) => <NewPaletteForm {...routeProps} seed={seed} addPalette={this.addPalette}/>}
+					render={(routeProps) => (
+						<NewPaletteForm
+							{...routeProps}
+							seed={SeedColors}
+							addPalette={this.addPalette}
+						/>
+					)}
 				/>
 				<Route exact path="/palette/:paletteName" render={getPalettes} />
 				<Route

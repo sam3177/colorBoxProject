@@ -9,7 +9,7 @@ class Palettes extends Component {
 		this.props.history.push(`/palette/${id}`);
 	};
 	render () {
-		let { classes, SeedColors } = this.props;
+		let { classes, SeedColors, deletePalette } = this.props;
 		return (
 			<div className={classes.root}>
 				<div className={classes.container}>
@@ -23,6 +23,7 @@ class Palettes extends Component {
 								handleClick={() => this.getLink(palette.id)}
 								key={palette.id}
 								palette={palette}
+								deletePalette={deletePalette}
 							/>
 						))}
 					</div>
