@@ -1,17 +1,30 @@
 // import chroma from 'chroma-js';
-
+import sizes from './SizesHelper';
 
 let styles = {
 	root       : {
-		width    : (props) =>
+		width              : (props) =>
 
 				props.link ? '20%' :
 				'100%',
-		height   : (props) =>
+		height             : (props) =>
 
 				props.link ? '25%' :
 				'100%',
-		position : 'relative'
+		position           : 'relative',
+	
+		[sizes.down('md')]: {
+			width              : (props) =>
+
+				props.link ? '50%' :
+				'100%',
+		},
+		[sizes.down('xs')]: {
+			width              : (props) =>
+
+				props.link ? '100%' :
+				'100%',
+		},
 	},
 	lightText  : {
 		color : 'white'
