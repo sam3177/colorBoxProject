@@ -1,6 +1,9 @@
 const styles = {
 	header : {
 		height         : '10vh',
+		position : 'absolute',
+		top:'0',
+		width           : '100%',
 		maxHeight      : '50px',
 		display        : 'flex',
 		justifyContent : 'space-between',

@@ -6,25 +6,68 @@ let styles = {
 		width              : (props) =>
 
 				props.link ? '20%' :
-				'100%',
+				'33.333%',
 		height             : (props) =>
 
 				props.link ? '25%' :
-				'100%',
+				'33.333%',
 		position           : 'relative',
-	
+		float              : 'left',
+		[sizes.down('lg')]: {
+			width  : (props) =>
+
+					props.link ? '25%' :
+					'33.333%',
+			height : (props) =>
+
+					props.link ? '20%' :
+					'33.333%'
+		},
 		[sizes.down('md')]: {
-			width              : (props) =>
+			width  : (props) =>
 
-				props.link ? '50%' :
-				'100%',
-		},
-		[sizes.down('xs')]: {
-			width              : (props) =>
+					props.link ? '50%' :
+					'50%',
+			height : (props) =>
 
-				props.link ? '100%' :
-				'100%',
+					props.link ? '10%' :
+					'20%'
 		},
+		'&:last-of-type'   : {
+			[sizes.down('md')]: {
+				width : (props) =>
+
+						props.link ? '50%' :
+						'100%'
+			},
+			[sizes.down('sm')]: {
+				width : (props) =>
+
+						props.link ? '100%' :
+						'100%'
+			}
+		},
+
+		[sizes.down('sm')]: {
+			width  : (props) =>
+
+					props.link ? '100%' :
+					'100%',
+			height : (props) =>
+
+					props.link ? '5%' :
+					'11.11%'
+		}
+		// [sizes.down('md')]: {
+		// 	width              : (props) =>
+
+		// 		props.link ? '50%' :
+		// 		'100%',
+		// 		height             : (props) =>
+
+		// 		props.link ? '25%' :
+		// 		'33%',
+		// },
 	},
 	lightText  : {
 		color : 'white'
@@ -37,12 +80,19 @@ let styles = {
 		opacity    : '0',
 		width      : '100%',
 		height     : '100%',
+		maxWidth      : '100vw',
+		maxHeight     : '100vh',
 		transition : 'transform 0.6s ease-in-out'
 	},
 	active     : {
 		opacity   : '1',
 		zIndex    : '9',
-		transform : 'scale(10)',
+		maxWidth      : '100vw',
+		maxHeight     : '100vh',
+		// position   : 'fixed',
+		// top        : '0',
+		// left       : '0',
+		transform : 'scale(1, 25)',
 		position  : 'absolute'
 	},
 
@@ -116,8 +166,8 @@ let styles = {
 			opacity         : '1',
 			zIndex          : '10',
 			transform       : 'scale(1)',
-			transition      : 'all 0.4s ease-in-out',
-			transitionDelay : '0.2s'
+			transition      : 'all 0.3s ease-in-out',
+			transitionDelay : '0.1s'
 		}
 	}
 };

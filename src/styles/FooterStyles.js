@@ -1,6 +1,8 @@
 let styles = {
 	root : {
 		width          : '100%',
+		position : 'absolute',
+		bottom :'0',
 		height         : '5vh',
 		display        : 'flex',
 		justifyContent : 'flex-end',
