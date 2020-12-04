@@ -1,3 +1,5 @@
+import sizes from './SizesHelper';
+
 const styles = {
 	palette : {
 		width          : '100%',
@@ -8,8 +10,11 @@ const styles = {
 	},
 	colors  : {
 		width    : '100%',
-		// marginTop: '30px',
 		height   : '90vh',
+		[sizes.down('sm')]:{
+			position : 'absolute',
+			bottom :0
+		}
 		// display  : 'flex',
 		// alignItems         : 'flex-start',
 		// flexWrap : 'wrap'

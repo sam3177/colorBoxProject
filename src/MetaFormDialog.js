@@ -48,7 +48,7 @@ class MetaFormDialog extends Component {
 					// color="primary"
 					onClick={this.handleOpenForm}
 				>
-					Save New Palette
+					Save Palette
 				</Button>
 				<Dialog
 					open={openForm}
@@ -72,6 +72,7 @@ class MetaFormDialog extends Component {
 								// className={classes.textValidator}
 								label="Palette Name"
 								fullWidth
+								focused={true}
 								onChange={this.changePaletteName}
 								value={paletteName}
 								validators={[ 'required', 'isUniquePaletteName' ]}

@@ -13,7 +13,7 @@ import styles from './styles/NewPaletteFormStyles';
 import DraggableColorList from './DraggableColorList';
 import ColorPickerForm from './ColorPickerForm';
 import { arrayMove } from 'react-sortable-hoc';
-// import seed from './SeedColors';
+import SeedColors from './SeedColors';
 
 class NewPaletteForm extends Component {
 	state = {
@@ -41,23 +41,24 @@ class NewPaletteForm extends Component {
 	};
 
 	getRandomColor = () => {
-		let allColors = this.props.seed.map((palette) => palette.colors).flat();
+		let allColors = SeedColors.map((palette) => palette.colors).flat();
 		let idx = Math.floor(Math.random() * allColors.length);
-		
-
-		
-			const pickedColor = allColors[idx];
-			// console.log(pickedColor);
-
-			if (!this.state.colors.includes(pickedColor)) {
-				this.setState((st) => ({
-					colors : [ ...st.colors, pickedColor ]
-				}));
-			
+		const pickedColor = allColors[idx];
+		console.log(!this.state.colors.includes(pickedColor));
+		console.log(allColors)
+		console.log(pickedColor)
+		console.log(this.state.colors)
+		if (!this.state.colors.includes(pickedColor)) {
+			this.setState({
+				colors : [ ...this.state.colors, pickedColor ]
+			});
+		}
+		else {
+			this.getRandomColor();
 		}
 	};
 
-	addNewPalette = ({palName, emoji}) => {
+	addNewPalette = ({ palName, emoji }) => {
 		let newPalette = {
 			paletteName : palName,
 			id          : palName.toLowerCase().replace(/ /g, '-'),
@@ -77,8 +78,8 @@ class NewPaletteForm extends Component {
 		}));
 	};
 	render () {
-		const { classes,seed } = this.props;
-		const { open, colors,} = this.state;
+		const { classes, seed } = this.props;
+		const { open, colors } = this.state;
 		// let newColors = colors.map((color) => (
 		// 	<DraggableColorBox key={color.name}
 		// 	deleteColor = {this.deleteColorBox}
@@ -125,11 +126,7 @@ class NewPaletteForm extends Component {
 									'FULL PALETTE'}
 							</Button>
 						</div>
-						<ColorPickerForm
-							colors={colors}
-							addNewColor={this.addNewColor}
-							
-						/>
+						<ColorPickerForm colors={colors} addNewColor={this.addNewColor} />
 					</div>
 				</Drawer>
 				<main

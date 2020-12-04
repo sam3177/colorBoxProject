@@ -1,3 +1,5 @@
+import sizes from './SizesHelper';
+
 let styles = {
 	root : {
 		// backgroundColor : 'pink',

@@ -1,3 +1,6 @@
+import sizes from './SizesHelper';
+
+
 let styles = {
 	root : {
 		width          : '100%',
@@ -9,6 +12,9 @@ let styles = {
 		alignItems     : 'center',
 		'& span'       : {
 			margin : '0 20px'
+		},
+		[sizes.down('sm')]:{
+			display: 'none'
 		}
 	}
 };

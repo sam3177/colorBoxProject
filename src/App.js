@@ -71,7 +71,7 @@ class App extends Component {
 					render={(routeProps) => (
 						<NewPaletteForm
 							{...routeProps}
-							seed={SeedColors}
+							seed={this.state.seed}
 							addPalette={this.addPalette}
 						/>
 					)}

@@ -1,3 +1,5 @@
+import sizes from './SizesHelper';
+
 const styles = {
 	link        : {
 		textDecoration : 'none'
@@ -65,7 +67,7 @@ const styles = {
 		position        : 'absolute',
 		right           : '0',
 		top             : '0',
-		width           : '10%',
+		width           : 'fit-content',
 		height          : '20%',
 		borderRadius    : '0 4px 0 0',
 		display         : 'flex',

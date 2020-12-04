@@ -39,7 +39,7 @@ class AppNavBar extends Component {
 				</Toolbar>
 				<div className={classes.navBtnContainer}>
 					<Link to="/">
-						<Button variant="contained">GO BACK</Button>
+						<Button variant="contained">BACK</Button>
 					</Link>
 					<MetaFormDialog seed={seed} addNewPalette={addNewPalette}/>
 

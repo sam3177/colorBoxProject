@@ -10,7 +10,6 @@ class MicroPalette extends Component {
 	};
 	render () {
 		let { palette, classes, handleClick } = this.props;
-		console.log(palette);
 		let colorSet = palette.colors.map((color) => (
 			<div
 				key={color.name}

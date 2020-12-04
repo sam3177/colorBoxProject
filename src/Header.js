@@ -47,19 +47,22 @@ class Header extends Component {
 						</div>
 					)}
 				</div>
+				<div className={classes.sliderBlock}>
+
 				{this.props.level && (
 					<div className={classes.level}>{`LEVEL: ${this.props.level}`}</div>
-				)}
+					)}
 				{this.props.level && (
 					<Slider
-						className={classes.slider}
-						defaultValue={this.props.level}
-						min={100}
-						max={900}
-						step={100}
-						onAfterChange={this.handleLevelChange}
+					className={classes.slider}
+					defaultValue={this.props.level}
+					min={100}
+					max={900}
+					step={100}
+					onAfterChange={this.handleLevelChange}
 					/>
-				)}
+					)}
+					</div>
 				<div className={classes.select}>
 					<Select value={this.state.type} onChange={this.handleTypeChange}>
 						<MenuItem value="hex">HEX - #ffffff</MenuItem>

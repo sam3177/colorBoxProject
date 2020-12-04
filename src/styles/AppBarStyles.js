@@ -1,3 +1,4 @@
+import sizes from './SizesHelper';
 const drawerWidth = 370;
 
 const styles = (theme) => ({
@@ -5,7 +6,7 @@ const styles = (theme) => ({
 		// 	'linear-gradient(135deg, rgba(237,1,214,1) 50%, rgba(9,245,32,1) 50%)',
 		// backgroundColor:'gray',
 		display        : 'flex',
-      flexDirection  : 'row',
+		flexDirection  : 'row',
 		justifyContent : 'space-between',
 		transition     : theme.transitions.create([ 'margin', 'width' ], {
 			easing   : theme.transitions.easing.sharp,
@@ -24,32 +25,38 @@ const styles = (theme) => ({
 		width : '50%'
 	},
 	menuButton           : {
-		marginLeft  : 12,
-		marginRight : 20
+		marginLeft         : 12,
+		marginRight        : 20,
+		[sizes.down('sm')]: {
+			marginRight : 0
+		}
 	},
 	hide                 : {
 		display : 'none'
 	},
 	navBtnContainer      : {
-		display        : 'flex',
-		justifyContent : 'flex-end',
-		alignItems     : 'center',
-		margin         : '15px 0',
-		width          : '40%',
-		padding        : '0 24px',
-		'& button'     : {
+		display            : 'flex',
+		justifyContent     : 'flex-end',
+		alignItems         : 'center',
+		margin             : '15px 0',
+		width              : '50%',
+		padding            : '0 24px',
+		'& button'         : {
 			fontSize        : '10px',
 			// color           : 'white',
 			width           : 'fit-content',
 			height          : '1.5rem',
 			backgroundColor : '#7B50F0'
 		},
-		'& a'          : {
+		'& a'              : {
 			textDecoration : 'none',
 			'& button'     : {
 				backgroundColor : '#ED6A52',
 				marginRight     : '2rem'
 			}
+		},
+		[sizes.down('sm')]: {
+			fontSize : '10px'
 		}
 	},
 	savePalettePopup     : {

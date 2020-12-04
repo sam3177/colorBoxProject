@@ -1,3 +1,5 @@
+import sizes from './SizesHelper';
+
 const styles = {
 	root      : {
 		display         : 'flex',
@@ -7,12 +9,18 @@ const styles = {
 		height          : '100%'
 	},
 	container : {
-		width         : '60%',
+		width         : '50%',
 		display       : 'flex',
 		flexDirection : 'column',
 		justifyContent: 'center',
 		alignItems    : 'flex-start',
-		flexWrap      : 'wrap'
+		flexWrap      : 'wrap',
+		[sizes.down('lg')]:{
+			width : '65%'
+		},
+		[sizes.down('md')]:{
+			width : '80%'
+		}
 	},
 	nav       : {
 		padding        : '1rem',
@@ -32,7 +40,11 @@ const styles = {
 		width               : '100%',
 		display             : 'grid',
 		gridTemplateColumns : 'repeat(3, 30%)',
-		gridGap             : '5%'
+		gridGap             : '5%',
+		[sizes.down('sm')]:{
+			gridTemplateColumns : 'repeat(2, 40%)',
+			gridGap             : '20%',
+		}
 	}
 };
 export default styles
