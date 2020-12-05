@@ -1,4 +1,4 @@
-const drawerWidth = 370;
+import {drawerWidth} from '../Variables'
 
 const styles = (theme) => ({
 	root                 : {

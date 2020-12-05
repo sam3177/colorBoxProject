@@ -1,5 +1,5 @@
+import {drawerWidth} from '../Variables'
 import sizes from './SizesHelper';
-const drawerWidth = 370;
 
 const styles = (theme) => ({
 	appBar               : {
@@ -23,6 +23,11 @@ const styles = (theme) => ({
 	},
 	toolbar              : {
 		width : '50%'
+	},
+	title:{
+		[sizes.down('sm')]:{
+			display:'none'
+		}
 	},
 	menuButton           : {
 		marginLeft         : 12,

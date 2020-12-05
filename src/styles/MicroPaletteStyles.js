@@ -5,6 +5,7 @@ const styles = {
 		textDecoration : 'none'
 	},
 	root        : {
+		// margin : '0 auto',
 		backgroundColor : 'white',
 		border          : '1px solid black',
 		borderRadius    : '5px',
@@ -67,7 +68,7 @@ const styles = {
 		position        : 'absolute',
 		right           : '0',
 		top             : '0',
-		width           : 'fit-content',
+		width           : '15%',
 		height          : '20%',
 		borderRadius    : '0 4px 0 0',
 		display         : 'flex',
