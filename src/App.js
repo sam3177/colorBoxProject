@@ -71,13 +71,13 @@ class App extends Component {
 									exact
 									path="/"
 									render={(routeProps) => (
-										<div className="routeTranzition">
+										// <div className="routeTranzition">
 											<Palettes
 												{...routeProps}
 												deletePalette={this.deletePalette}
 												SeedColors={seed}
 											/>
-										</div>
+										// </div>
 									)}
 								/>
 								<Route
@@ -87,7 +87,7 @@ class App extends Component {
 										<div className="routeTranzition">
 											<NewPaletteForm
 												{...routeProps}
-												seed={this.state.seed}
+												seed={SeedColors}
 												addPalette={this.addPalette}
 											/>
 										</div>

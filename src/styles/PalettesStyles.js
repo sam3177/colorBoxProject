@@ -27,6 +27,10 @@ const styles = {
 		overFlow         : 'scroll',
 		[sizes.up('xs')]: {
 			height : '100vh'
+		},
+		[sizes.down('xs')]:{
+		paddingBottom :'30px',
+
 		}
 	},
 	listIitem:{
