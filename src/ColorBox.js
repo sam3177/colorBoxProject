@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Link } from 'react-router-dom';
 import chroma from 'chroma-js';
+import classNames from 'classnames';
 import { withStyles } from '@material-ui/styles';
 import styles from './styles/ColorBoxStyles'
 
@@ -23,12 +24,16 @@ class ColorBox extends Component {
 			<CopyToClipboard text={this.props.toCopy} onCopy={this.handleCopy}>
 				<div className={classes.root} style={{ backgroundColor: hex }}>
 					<div
-						className={`${classes.overlay} ${copied && classes.active}`}
+						className={classNames(classes.overlay, {
+							[classes.active]: copied
+						})}
 						style={{ backgroundColor: hex }}
+						
 					/>
 					<div
-						className={`${classes.overlayMsg} ${copied &&
-							classes.active}`}
+						className={classNames(classes.overlayMsg, {
+							[classes.active]: copied
+						})}
 					>
 						<h1 className={isDark && classes.lightText}>COPIED</h1>
 						<p className={isDark && classes.lightText}>{this.props.toCopy}</p>
@@ -37,8 +42,11 @@ class ColorBox extends Component {
 						<button className={classes.copyButton}>COPY</button>
 						<div className={classes.content}>
 							<span
-								className={`${classes.name} ${isDark && classes.lightText}`}
+								className={classNames(classes.name, {
+									[classes.lightText]: isDark
+								})}
 							>
+								
 								{name.toUpperCase()}
 							</span>
 							{this.props.link && (

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { withStyles } from '@material-ui/core/styles';
-import {Picker} from 'emoji-mart'
-import 'emoji-mart/css/emoji-mart.css'
+import { Picker } from 'emoji-mart';
+import 'emoji-mart/css/emoji-mart.css';
 import styles from './styles/MetaFormDialogStyles';
 
 class MetaFormDialog extends Component {
@@ -23,8 +23,8 @@ class MetaFormDialog extends Component {
 	state = { openForm: false, openPicker: false, paletteName: '' };
 	handleOpenForm = () => {
 		this.setState({ openForm: true });
-   };
-   handleOpenPicker = () => {
+	};
+	handleOpenPicker = () => {
 		this.setState({ openForm: false, openPicker: true });
 	};
 	handleClose = () => {
@@ -34,8 +34,11 @@ class MetaFormDialog extends Component {
 		this.setState({ paletteName: e.target.value });
 	};
 	addNewPalette = (emoji) => {
-      console.log(emoji);
-		this.props.addNewPalette({palName:this.state.paletteName, emoji: emoji.native});
+		console.log(emoji);
+		this.props.addNewPalette({
+			palName: this.state.paletteName,
+			emoji: emoji.native
+		});
 	};
 	render () {
 		let { openForm, openPicker, paletteName } = this.state;
@@ -45,7 +48,6 @@ class MetaFormDialog extends Component {
 				<Button
 					className={classes.openButton}
 					variant="outlined"
-					// color="primary"
 					onClick={this.handleOpenForm}
 				>
 					Save Palette
@@ -57,7 +59,6 @@ class MetaFormDialog extends Component {
 				>
 					<ValidatorForm
 						className={classes.dialogPopUp}
-						// className={classes.validatorPaletteForm}
 						onSubmit={this.handleOpenPicker}
 					>
 						<DialogTitle id="form-dialog-title">
@@ -65,9 +66,6 @@ class MetaFormDialog extends Component {
 							Add a Palette Name
 						</DialogTitle>
 						<DialogContent>
-							{/* <DialogContentText>
-                  
-						</DialogContentText> */}
 							<TextValidator
 								// className={classes.textValidator}
 								label="Palette Name"
@@ -81,14 +79,6 @@ class MetaFormDialog extends Component {
 									'Palette Name already in use'
 								]}
 							/>
-							{/* <Button
-								type="submit"
-								// onClick={this.addNewColor}
-								// className={classes.paletteSubmit}
-								variant="contained"
-							>
-								ADD PALETTE
-							</Button> */}
 						</DialogContent>
 						<DialogActions className={classes.dialogActions}>
 							<Button
@@ -104,17 +94,14 @@ class MetaFormDialog extends Component {
 							</Button>
 						</DialogActions>
 					</ValidatorForm>
-               </Dialog>
-               <Dialog 
-               open={openPicker}
+				</Dialog>
+				<Dialog
+					open={openPicker}
 					onClose={this.handleClose}
 					aria-labelledby="form-dialog-title"
-               >
-            <Picker 
-            onSelect={this.addNewPalette}
-            />
-               </Dialog>
-				
+				>
+					<Picker onSelect={this.addNewPalette} />
+				</Dialog>
 			</div>
 		);
 	}

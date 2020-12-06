@@ -1,35 +1,31 @@
 import React, { Component } from 'react';
-import classNames from 'classnames';
+import { arrayMove } from 'react-sortable-hoc';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import AppNavBar from './AppBar';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import styles from './styles/NewPaletteFormStyles';
+import classNames from 'classnames';
+import AppNavBar from './AppBar';
 import DraggableColorList from './DraggableColorList';
 import ColorPickerForm from './ColorPickerForm';
-import { arrayMove } from 'react-sortable-hoc';
 import SeedColors from './SeedColors';
+import styles from './styles/NewPaletteFormStyles';
 
 class NewPaletteForm extends Component {
 	state = {
 		open   : true,
-
 		colors : this.props.seed[0].colors
 	};
-
 	handleDrawerOpen = () => {
 		this.setState({ open: true });
 	};
-
 	handleDrawerClose = () => {
 		this.setState({ open: false });
 	};
-
 	clearPalette = () => {
 		this.setState({ colors: [] });
 	};
@@ -39,15 +35,14 @@ class NewPaletteForm extends Component {
 			colorName : ''
 		}));
 	};
-
 	getRandomColor = () => {
 		let allColors = SeedColors.map((palette) => palette.colors).flat();
 		let idx = Math.floor(Math.random() * allColors.length);
 		const pickedColor = allColors[idx];
-		console.log(!this.state.colors.includes(pickedColor));
-		console.log(allColors)
-		console.log(pickedColor)
-		console.log(this.state.colors)
+		// console.log(!this.state.colors.includes(pickedColor));
+		// console.log(allColors)
+		// console.log(pickedColor)
+		// console.log(this.state.colors)
 		if (!this.state.colors.includes(pickedColor)) {
 			this.setState({
 				colors : [ ...this.state.colors, pickedColor ]
@@ -80,11 +75,6 @@ class NewPaletteForm extends Component {
 	render () {
 		const { classes, seed } = this.props;
 		const { open, colors } = this.state;
-		// let newColors = colors.map((color) => (
-		// 	<DraggableColorBox key={color.name}
-		// 	deleteColor = {this.deleteColorBox}
-		// 	color={color} />
-		// ));
 		let palSize = colors.length < 20;
 		return (
 			<div className={classes.root}>
@@ -136,6 +126,7 @@ class NewPaletteForm extends Component {
 				>
 					<DraggableColorList
 						axis="xy"
+						distance={20}
 						colors={colors}
 						deleteColorBox={this.deleteColorBox}
 						onSortEnd={this.onSortEnd}

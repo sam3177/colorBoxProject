@@ -3,7 +3,7 @@ import sizes from './SizesHelper';
 
 const styles = (theme) => ({
 	appBar               : {
-		// 	'linear-gradient(135deg, rgba(237,1,214,1) 50%, rgba(9,245,32,1) 50%)',
+			// background: 'linear-gradient(135deg, rgba(237,1,214,1) 50%, rgba(9,245,32,1) 50%)',
 		// backgroundColor:'gray',
 		display        : 'flex',
 		flexDirection  : 'row',
@@ -48,7 +48,6 @@ const styles = (theme) => ({
 		padding            : '0 24px',
 		'& button'         : {
 			fontSize        : '10px',
-			// color           : 'white',
 			width           : 'fit-content',
 			height          : '1.5rem',
 			backgroundColor : '#7B50F0'

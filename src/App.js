@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import SeedColors from './SeedColors';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Palette from './Palette';
 import Palettes from './Palettes';
-import ColorSet from './ColorSet';
 import NewPaletteForm from './NewPaletteForm';
-import './App.css';
+import ColorSet from './ColorSet';
+import SeedColors from './SeedColors';
 import { generatePalette } from './ColorHelper';
+import './App.css';
 
 class App extends Component {
 	savedPalettes = JSON.parse(window.localStorage.getItem('savedPalettes'));
@@ -25,7 +26,7 @@ class App extends Component {
 		);
 	};
 	deletePalette = (palette) => {
-		let newSeed = this.state.seed.filter((pal) =>pal !== palette);
+		let newSeed = this.state.seed.filter((pal) => pal !== palette);
 		this.setState({ seed: newSeed }, this.saveToLocal);
 	};
 	render () {
@@ -33,8 +34,12 @@ class App extends Component {
 		let getPalettes = (props) => {
 			let name = props.match.params.paletteName;
 			let selPalette = seed.find((palette) => palette.id === name);
-			console.log(generatePalette(selPalette));
-			return <Palette {...props} palette={generatePalette(selPalette)} />;
+			// console.log(generatePalette(selPalette));
+			return (
+				<div className="routeTranzition">
+					<Palette {...props} palette={generatePalette(selPalette)} />
+				</div>
+			);
 		};
 		let getColorSet = (props) => {
 			let name = props.match.params.paletteName;
@@ -49,41 +54,62 @@ class App extends Component {
 			}
 			console.log(selColor);
 			selColor.shift();
-			return <ColorSet {...props} palInfo={palette} palette={selColor} />;
+			return (
+				<div className="routeTranzition">
+					<ColorSet {...props} palInfo={palette} palette={selColor} />
+				</div>
+			);
 		};
 
 		return (
-			<Switch>
-				<Route
-					exact
-					path="/"
-					render={(routeProps) => (
-						<Palettes
-							{...routeProps}
-							deletePalette={this.deletePalette}
-							SeedColors={seed}
-						/>
-					)}
-				/>
-				<Route
-					exact
-					path="/palette/new"
-					render={(routeProps) => (
-						<NewPaletteForm
-							{...routeProps}
-							seed={this.state.seed}
-							addPalette={this.addPalette}
-						/>
-					)}
-				/>
-				<Route exact path="/palette/:paletteName" render={getPalettes} />
-				<Route
-					exact
-					path="/palette/:paletteName/color/:colorName"
-					render={getColorSet}
-				/>
-				<Route render={() => <h1>404, madafaca!!!</h1>} />
-			</Switch>
+			<Route
+				render={({ location }) => (
+					<TransitionGroup>
+						<CSSTransition timeout={500} key={location.key} classNames="item">
+							<Switch location={location}>
+								<Route
+									exact
+									path="/"
+									render={(routeProps) => (
+										<div className="routeTranzition">
+											<Palettes
+												{...routeProps}
+												deletePalette={this.deletePalette}
+												SeedColors={seed}
+											/>
+										</div>
+									)}
+								/>
+								<Route
+									exact
+									path="/palette/new"
+									render={(routeProps) => (
+										<div className="routeTranzition">
+											<NewPaletteForm
+												{...routeProps}
+												seed={this.state.seed}
+												addPalette={this.addPalette}
+											/>
+										</div>
+									)}
+								/>
+								<Route
+									exact
+									path="/palette/:paletteName"
+									render={getPalettes}
+								/>
+								<Route
+									exact
+									path="/palette/:paletteName/color/:colorName"
+									render={getColorSet}
+								/>
+
+								<Route render={() => <h1>404, madafaca!!!</h1>} />
+							</Switch>
+						</CSSTransition>
+					</TransitionGroup>
+				)}
+			/>
 		);
 	}
 }

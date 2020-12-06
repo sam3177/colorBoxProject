@@ -1,2 +1,2 @@
-const drawerWidth = 350;
+const drawerWidth = 300;
 export {drawerWidth}

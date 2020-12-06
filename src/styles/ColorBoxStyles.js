@@ -89,10 +89,7 @@ let styles = {
 		zIndex    : '9',
 		maxWidth      : '100vw',
 		maxHeight     : '100vh',
-		// position   : 'fixed',
-		// top        : '0',
-		// left       : '0',
-		transform : 'scale(1, 25)',
+		transform : 'scale(25)',
 		position  : 'absolute'
 	},
 

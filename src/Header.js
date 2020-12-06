@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import Slider from 'rc-slider';
+import { Link } from 'react-router-dom';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/styles';
-import styles from './styles/HeaderStyles'
+import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
+import styles from './styles/HeaderStyles'
 
 
 class Header extends Component {

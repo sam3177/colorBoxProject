@@ -9,9 +9,6 @@ let styles = {
    colors: {
       width: '100%',
       height: '90vh',
-      // display: 'grid',
-      // gridTemplateColumns: 'repeat(3, 33.3%)',
-      // gridGap: '0',
    }
    
 }

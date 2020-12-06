@@ -15,9 +15,6 @@ const styles = {
 			position : 'absolute',
 			bottom :0
 		}
-		// display  : 'flex',
-		// alignItems         : 'flex-start',
-		// flexWrap : 'wrap'
 	}
 };
 export default styles;

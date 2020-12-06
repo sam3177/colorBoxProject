@@ -8,7 +8,15 @@ const styles = {
 		'.item-exit-active' : {
 			opacity    : '0',
 			transition : 'opacity 500ms ease-in-out'
-		}
+		},
+		'.item-enter'        : {
+			opacity : '0'
+		},
+		'.item-enter-active' : {
+			opacity         : '1',
+			transition : 'opacity 500ms ease-in-out'
+		},
+		
 	},
 	root      : {
 		display          : 'flex',
@@ -20,6 +28,9 @@ const styles = {
 		[sizes.up('xs')]: {
 			height : '100vh'
 		}
+	},
+	listIitem:{
+		paddingLeft:'40px'
 	},
 	container : {
 		width              : '50%',

@@ -30,18 +30,15 @@ const styles = {
 		display  : 'inline-block',
 		margin   : '0',
 		position : 'relative'
-		// marginBottom : '-3px'
 	},
 	colors      : {
 		display                 : 'flex',
 		flexWrap                : 'wrap',
-		// float:'left',
 		backgroundColor         : 'grey',
 		width                   : '95%',
 		height                  : '9vh',
 		borderRadius            : '5px',
 		overFlow                : 'hidden',
-		// border       : '1px solid black',
 		margin                  : '10px auto',
 
 		'& div:nth-of-type(1)'  : {

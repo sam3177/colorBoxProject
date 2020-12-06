@@ -7,7 +7,6 @@ const styles = {
 	},
 	button        : {
 		fontSize        : '10px',
-		// color           : 'white',
 		width           : 'fit-content',
 		height          : '1.5rem',
 		backgroundColor : '#7B50F0',
